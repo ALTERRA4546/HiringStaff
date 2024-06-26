@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище HiringStaffModelContainer" CdmEntityContainer="HiringStaffEntities">
+    <EntitySetMapping Name="Авторизация">
+      <EntityTypeMapping TypeName="HiringStaffModel.Авторизация">
+        <MappingFragment StoreEntitySet="Авторизация">
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Код_сотрудника" ColumnName="Код сотрудника" />
+          <ScalarProperty Name="Код_авторизации" ColumnName="Код авторизации" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="График_работы">
+      <EntityTypeMapping TypeName="HiringStaffModel.График_работы">
+        <MappingFragment StoreEntitySet="График работы">
+          <ScalarProperty Name="Дата_окончания_работы" ColumnName="Дата окончания работы" />
+          <ScalarProperty Name="Дата_начала_работы" ColumnName="Дата начала работы" />
+          <ScalarProperty Name="Код_сотрудника" ColumnName="Код сотрудника" />
+          <ScalarProperty Name="Код_графика_работы" ColumnName="Код графика работы" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Документы">
+      <EntityTypeMapping TypeName="HiringStaffModel.Документы">
+        <MappingFragment StoreEntitySet="Документы">
+          <ScalarProperty Name="Срок_действия_договора" ColumnName="Срок действия договора" />
+          <ScalarProperty Name="Номер_трудового_договора" ColumnName="Номер трудового договора" />
+          <ScalarProperty Name="Фотография" ColumnName="Фотография" />
+          <ScalarProperty Name="Номер_медицинского_полюса" ColumnName="Номер медицинского полюса" />
+          <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+          <ScalarProperty Name="Номер_паспорта" ColumnName="Номер паспорта" />
+          <ScalarProperty Name="Серия_паспорта" ColumnName="Серия паспорта" />
+          <ScalarProperty Name="Код_сотрудника" ColumnName="Код сотрудника" />
+          <ScalarProperty Name="Код_документа" ColumnName="Код документа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Должность">
+      <EntityTypeMapping TypeName="HiringStaffModel.Должность">
+        <MappingFragment StoreEntitySet="Должность">
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Код_должности" ColumnName="Код должности" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Зарплата">
+      <EntityTypeMapping TypeName="HiringStaffModel.Зарплата">
+        <MappingFragment StoreEntitySet="Зарплата">
+          <ScalarProperty Name="Зарплата1" ColumnName="Зарплата" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+          <ScalarProperty Name="Код_должности" ColumnName="Код должности" />
+          <ScalarProperty Name="Код_зарплаты" ColumnName="Код зарплаты" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Классы">
+      <EntityTypeMapping TypeName="HiringStaffModel.Классы">
+        <MappingFragment StoreEntitySet="Классы">
+          <ScalarProperty Name="Количество_учеников" ColumnName="Количество учеников" />
+          <ScalarProperty Name="Код_классного_кабинета" ColumnName="Код классного кабинета" />
+          <ScalarProperty Name="Код_классного_руководителя" ColumnName="Код классного руководителя" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Код_класса" ColumnName="Код класса" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Помещение">
+      <EntityTypeMapping TypeName="HiringStaffModel.Помещение">
+        <MappingFragment StoreEntitySet="Помещение">
+          <ScalarProperty Name="Площадь" ColumnName="Площадь" />
+          <ScalarProperty Name="Код_отвественного_сотрудника" ColumnName="Код отвественного сотрудника" />
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Код_помещения" ColumnName="Код помещения" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Предмет">
+      <EntityTypeMapping TypeName="HiringStaffModel.Предмет">
+        <MappingFragment StoreEntitySet="Предмет">
+          <ScalarProperty Name="Наименование" ColumnName="Наименование" />
+          <ScalarProperty Name="Код_предмета" ColumnName="Код предмета" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Преподаваемые_предметы">
+      <EntityTypeMapping TypeName="HiringStaffModel.Преподаваемые_предметы">
+        <MappingFragment StoreEntitySet="Преподаваемые предметы">
+          <ScalarProperty Name="Код_предмета" ColumnName="Код предмета" />
+          <ScalarProperty Name="Код_учителя" ColumnName="Код учителя" />
+          <ScalarProperty Name="Код_преподоваемого_предмета" ColumnName="Код преподоваемого предмета" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Преподоваемые_часы">
+      <EntityTypeMapping TypeName="HiringStaffModel.Преподоваемые_часы">
+        <MappingFragment StoreEntitySet="Преподоваемые часы">
+          <ScalarProperty Name="Количество_часов" ColumnName="Количество часов" />
+          <ScalarProperty Name="Дата_распределения_часов" ColumnName="Дата распределения часов" />
+          <ScalarProperty Name="Код_класса" ColumnName="Код класса" />
+          <ScalarProperty Name="Код_предмета" ColumnName="Код предмета" />
+          <ScalarProperty Name="Код_преподаваемых_часов" ColumnName="Код преподаваемых часов" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Сотрудник">
+      <EntityTypeMapping TypeName="HiringStaffModel.Сотрудник">
+        <MappingFragment StoreEntitySet="Сотрудник">
+          <ScalarProperty Name="Код_должности" ColumnName="Код должности" />
+          <ScalarProperty Name="Дата_приема_на_работу" ColumnName="Дата приема на работу" />
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Код_сотрудника" ColumnName="Код сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
