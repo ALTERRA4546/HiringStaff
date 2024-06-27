@@ -27,6 +27,7 @@
     <Property Name="Серия паспорта" Type="int" Nullable="false" />
     <Property Name="Номер паспорта" Type="int" Nullable="false" />
     <Property Name="ИНН" Type="bigint" Nullable="false" />
+    <Property Name="СНИЛС" Type="bigint" Nullable="false" />
     <Property Name="Номер медицинского полюса" Type="bigint" Nullable="false" />
     <Property Name="Фотография" Type="varbinary(max)" />
     <Property Name="Номер трудового договора" Type="bigint" />

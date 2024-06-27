@@ -42,7 +42,8 @@ namespace HiringStaff
 
                 var employeesData = (from employee in dataBase.Сотрудник
                                      join
-                                     post in dataBase.Должность on employee.Код_должности equals post.Код_должности
+                                     post in dataBase.Должность on employee.Код_должности equals post.Код_должности into postGroup
+                                     from post in postGroup.DefaultIfEmpty()
                                      where ((tempPost == null || post.Наименование == tempPost) && (search == null || employee.Фамилия.ToLower().Contains(search) || employee.Имя.ToLower().Contains(search) || employee.Отчество.ToLower().Contains(search) || employee.Номер_телефона.ToLower().Contains(search) || employee.Email.ToLower().Contains(search) || employee.Адрес.ToLower().Contains(search)))
                                      select new
                                      {
@@ -101,7 +102,7 @@ namespace HiringStaff
             AddOrChangeEmployee addOrChangeEmployee = new AddOrChangeEmployee();
             TempData.selectedEmployee = -1;
             addOrChangeEmployee.ShowDialog();
-            Initial(null, null);
+            Filter();
         }
 
         // Удаление сотрудника
@@ -128,12 +129,24 @@ namespace HiringStaff
                     var removeDocument = dataBase.Документы.FirstOrDefault(x => x.Код_сотрудника == idRemoveEmployee);
                     var removeAuthorization = dataBase.Авторизация.FirstOrDefault(x => x.Код_сотрудника == idRemoveEmployee);
                     var removeEmployee = dataBase.Сотрудник.FirstOrDefault(x => x.Код_сотрудника == idRemoveEmployee);
-                    dataBase.Документы.Remove(removeDocument);
-                    dataBase.Авторизация.Remove(removeAuthorization);
+                    var removeRoom = dataBase.Помещение.FirstOrDefault(x => x.Код_отвественного_сотрудника == idRemoveEmployee);
+                    var removeClass = dataBase.Классы.FirstOrDefault(x => x.Код_классного_руководителя == idRemoveEmployee);
+                    var removeSubjectsTaught = dataBase.Преподаваемые_предметы.Where(x => x.Код_учителя == idRemoveEmployee).ToList();
+
+                    if(removeDocument != null)
+                        dataBase.Документы.Remove(removeDocument);
+                    if(removeAuthorization != null)
+                        dataBase.Авторизация.Remove(removeAuthorization);
+                    if (removeRoom != null)
+                        removeRoom.Код_отвественного_сотрудника = null;
+                    if (removeClass != null)
+                        removeClass.Код_классного_руководителя = null;
+                    if (removeSubjectsTaught != null)
+                        dataBase.Преподаваемые_предметы.RemoveRange(removeSubjectsTaught);
                     dataBase.Сотрудник.Remove(removeEmployee);
                     dataBase.SaveChanges();
 
-                    Initial(null, null);
+                    Filter();
                     MessageBox.Show("Сотрудника был удален","Информация",MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }

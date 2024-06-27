@@ -19,6 +19,7 @@ namespace HiringStaff
         public int Серия_паспорта { get; set; }
         public int Номер_паспорта { get; set; }
         public long ИНН { get; set; }
+        public long СНИЛС { get; set; }
         public long Номер_медицинского_полюса { get; set; }
         public byte[] Фотография { get; set; }
         public Nullable<long> Номер_трудового_договора { get; set; }

@@ -2,6 +2,7 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -63,11 +64,15 @@ namespace HiringStaff
                 classData.Add("Нет");
 
                 Post.ItemsSource = postData;
+                if(postData != null)
+                    Post.SelectedIndex = 0;
                 Room.ItemsSource = roomData;
                 Room.SelectedItem = "Нет";
                 Class.ItemsSource = classData;
                 Class.SelectedItem = "Нет";
                 Item.ItemsSource = itemData;
+
+                ItemList.ItemsSource = itemList;
 
                 // Загрузка данных сотрудника
                 if (TempData.selectedEmployee != -1)
@@ -175,7 +180,7 @@ namespace HiringStaff
                         tempItem.Наименование = line.Наименование;
                         itemList.Add(tempItem);
                     }
-                    ItemList.ItemsSource = itemList;
+                    ItemList.Items.Refresh();
                 }
             }
         }
@@ -205,22 +210,27 @@ namespace HiringStaff
                 MessageBox.Show("Формат стажа указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if (int.TryParse(PassportSeries.Text,out _) == false)
+            if (int.TryParse(PassportSeries.Text,out _) == false || PassportSeries.Text.Length != 4)
             {
                 MessageBox.Show("Формат серии паспорта указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if(int.TryParse(PassportNumber.Text, out _) == false)
+            if(int.TryParse(PassportNumber.Text, out _) == false || PassportNumber.Text.Length != 6)
             {
                 MessageBox.Show("Формат номера паспорта указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if(UInt64.TryParse(INN.Text, out _) == false)
+            if(UInt64.TryParse(INN.Text, out _) == false || (INN.Text.Length < 10 || INN.Text.Length > 12))
             {
                 MessageBox.Show("Формат ИНН указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if(UInt64.TryParse(MedicalPoleNumber.Text, out _) == false)
+            if (UInt64.TryParse(SNILS.Text, out _) == false || SNILS.Text.Length == 11)
+            {
+                MessageBox.Show("Формат СНИЛС указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            if(UInt64.TryParse(MedicalPoleNumber.Text, out _) == false || MedicalPoleNumber.Text.Length != 16)
             {
                 MessageBox.Show("Формат номера мед. полюса указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -244,6 +254,13 @@ namespace HiringStaff
             // Сохранений изменений
             using (var dataBase = new HiringStaffEntities())
             {
+                var checkLogin = dataBase.Авторизация.FirstOrDefault(x=>x.Логин == Login.Text);
+                if (checkLogin != null && TempData.selectedEmployee == -1)
+                {
+                    MessageBox.Show("Данный логин уже занят", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 if (TempData.selectedEmployee == -1)
                 {
                     var employee = new Сотрудник();
@@ -266,10 +283,11 @@ namespace HiringStaff
                     documents.Серия_паспорта = Convert.ToInt32(PassportSeries.Text);
                     documents.Номер_паспорта = Convert.ToInt32(PassportNumber.Text);
                     documents.ИНН = Convert.ToInt64(INN.Text);
+                    documents.СНИЛС = Convert.ToInt64(SNILS.Text);
                     documents.Номер_медицинского_полюса = Convert.ToInt64(MedicalPoleNumber.Text);
                     documents.Номер_трудового_договора = Convert.ToInt64(NumberfEmploymentContract.Text);
                     documents.Срок_действия_договора = Convert.ToInt32(TermAgreement.Text);
-                    if (photoPath != "")
+                    if (photoPath != null)
                     {
                         byte[] imageData = File.ReadAllBytes(photoPath);
                         documents.Фотография = imageData;

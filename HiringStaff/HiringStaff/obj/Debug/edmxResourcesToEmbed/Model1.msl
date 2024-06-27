@@ -28,6 +28,7 @@
           <ScalarProperty Name="Номер_трудового_договора" ColumnName="Номер трудового договора" />
           <ScalarProperty Name="Фотография" ColumnName="Фотография" />
           <ScalarProperty Name="Номер_медицинского_полюса" ColumnName="Номер медицинского полюса" />
+          <ScalarProperty Name="СНИЛС" ColumnName="СНИЛС" />
           <ScalarProperty Name="ИНН" ColumnName="ИНН" />
           <ScalarProperty Name="Номер_паспорта" ColumnName="Номер паспорта" />
           <ScalarProperty Name="Серия_паспорта" ColumnName="Серия паспорта" />

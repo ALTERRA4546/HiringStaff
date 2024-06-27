@@ -90,6 +90,7 @@
     <Property Name="Серия_паспорта" Type="Int32" Nullable="false" />
     <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
     <Property Name="ИНН" Type="Int64" Nullable="false" />
+    <Property Name="СНИЛС" Type="Int64" Nullable="false" />
     <Property Name="Номер_медицинского_полюса" Type="Int64" Nullable="false" />
     <Property Name="Фотография" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Номер_трудового_договора" Type="Int64" />
