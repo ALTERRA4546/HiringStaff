@@ -27,7 +27,7 @@
           <ScalarProperty Name="Срок_действия_договора" ColumnName="Срок действия договора" />
           <ScalarProperty Name="Номер_трудового_договора" ColumnName="Номер трудового договора" />
           <ScalarProperty Name="Фотография" ColumnName="Фотография" />
-          <ScalarProperty Name="Номер_медицинского_полюса" ColumnName="Номер медицинского полюса" />
+          <ScalarProperty Name="Номер_медицинского_полиса" ColumnName="Номер медицинского полиса" />
           <ScalarProperty Name="СНИЛС" ColumnName="СНИЛС" />
           <ScalarProperty Name="ИНН" ColumnName="ИНН" />
           <ScalarProperty Name="Номер_паспорта" ColumnName="Номер паспорта" />
@@ -45,10 +45,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Зарплата">
-      <EntityTypeMapping TypeName="HiringStaffModel.Зарплата">
-        <MappingFragment StoreEntitySet="Зарплата">
-          <ScalarProperty Name="Зарплата1" ColumnName="Зарплата" />
+    <EntitySetMapping Name="Зарплаты_сотрудников">
+      <EntityTypeMapping TypeName="HiringStaffModel.Зарплаты_сотрудников">
+        <MappingFragment StoreEntitySet="Зарплаты сотрудников">
+          <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
           <ScalarProperty Name="Стаж" ColumnName="Стаж" />
           <ScalarProperty Name="Код_должности" ColumnName="Код должности" />
           <ScalarProperty Name="Код_зарплаты" ColumnName="Код зарплаты" />

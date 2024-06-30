@@ -5,13 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HiringStaff"
         mc:Ignorable="d"
-        Title="HiringStaff" Height="720" Width="1280" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="HiringStaff" Height="670" Width="1280" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid>
             <Rectangle VerticalAlignment="Top" Width="1280" Height="35" Fill="Black"/>
+            <WrapPanel HorizontalAlignment="Left" Margin="10,0,10,0">
+                <Menu Height="25" VerticalAlignment="Top" Margin="0,4,0,0" Background="Black" FontSize="16">
+                    <MenuItem Header="Пользователь" Foreground="Yellow">
+                        <MenuItem x:Name="ChangeUser" Header="Сменить пользователя" Foreground="Black" Click="ChangeUser_Click"/>
+                        <MenuItem x:Name="Exit" Header="Выйти" Foreground="Black" Click="Exit_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Данные" Foreground="Yellow">
+                        <MenuItem x:Name="Export" Header="Экспорт" Foreground="Black" Click="Export_Click"/>
+                    </MenuItem>
+                    <MenuItem x:Name="WorkSchedule" Header="График работы" Foreground="Yellow" Click="WorkSchedule_Click"/>
+                    <MenuItem Header="Отчеты" Foreground="Yellow">
+                        <MenuItem x:Name="SalaryReport" Header="Отчет о зарплате" Foreground="Black" Click="SalaryReport_Click"/>
+                        <MenuItem x:Name="ReportOnHoursWorked" Header="Отчет об отработанных часах" Foreground="Black" Click="ReportOnHoursWorked_Click"/>
+                    </MenuItem>
+                </Menu>
+            </WrapPanel>
             <WrapPanel HorizontalAlignment="Right" Margin="10,0,10,0">
                 <Label x:Name="UserName" Margin="0,0,10,0" Content="ФИО" HorizontalAlignment="Right" FontSize="16" Foreground="Yellow"/>
-                <Label x:Name="Exit" Content="Выйти" HorizontalAlignment="Right" FontSize="16" Foreground="Yellow" MouseLeftButtonDown="Exit_MouseLeftButtonDown"/>
             </WrapPanel>
         </Grid>
         <Grid Margin="10,45,10,10" HorizontalAlignment="Center">
@@ -23,9 +38,9 @@
                     <ComboBox x:Name="ChoiceOfPosition" Width="200" FontSize="14" SelectionChanged="ChoiceOfPosition_SelectionChanged"/>
                 </WrapPanel>
                 <DataGrid x:Name="EmployeeData" Margin="0,0,0,10" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Top" Height="500" Width="1240" ColumnWidth="*" FontSize="14" MouseDoubleClick="EmployeeData_MouseDoubleClick"/>
-                <WrapPanel>
-                    <Button x:Name="AddEmployees" Content="Добавить" Margin="0,0,10,0" FontSize="14" Width="150" Click="AddEmployees_Click"/>
-                    <Button x:Name="RemoveEmployees" Content="Удалить" Margin="0,0,10,0" FontSize="14" Width="150" Click="RemoveEmployees_Click"/>
+                <WrapPanel HorizontalAlignment="Left">
+                    <Button x:Name="AddEmployees" Content="Добавить сотрудника" Margin="0,0,10,0" FontSize="14" Width="180" Click="AddEmployees_Click"/>
+                    <Button x:Name="RemoveEmployees" Content="Удалить сотрудника" Margin="0,0,10,0" FontSize="14" Width="180" Click="RemoveEmployees_Click"/>
                 </WrapPanel>
             </StackPanel>
         </Grid>

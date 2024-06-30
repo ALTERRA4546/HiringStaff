@@ -17,7 +17,7 @@ namespace HiringStaff
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Должность()
         {
-            this.Зарплата = new HashSet<Зарплата>();
+            this.Зарплаты_сотрудников = new HashSet<Зарплаты_сотрудников>();
             this.Сотрудник = new HashSet<Сотрудник>();
         }
     
@@ -25,7 +25,7 @@ namespace HiringStaff
         public string Наименование { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Зарплата> Зарплата { get; set; }
+        public virtual ICollection<Зарплаты_сотрудников> Зарплаты_сотрудников { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Сотрудник> Сотрудник { get; set; }
     }

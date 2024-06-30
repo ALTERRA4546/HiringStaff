@@ -1,0 +1,68 @@
+﻿<Window x:Class="HiringStaff.Administrator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HiringStaff"
+        mc:Ignorable="d"
+        Title="HiringStaff" Height="670" Width="1280" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid>
+            <Rectangle VerticalAlignment="Top" Width="1280" Height="35" Fill="Black"/>
+            <WrapPanel HorizontalAlignment="Left" Margin="10,0,10,0">
+                <Menu Height="25" VerticalAlignment="Top" Margin="0,4,0,0" Background="Black" FontSize="16">
+                    <MenuItem Header="Пользователь" Foreground="Yellow">
+                        <MenuItem x:Name="ChangeUser" Header="Сменить пользователя" Foreground="Black" Click="ChangeUser_Click"/>
+                        <MenuItem x:Name="Exit" Header="Выйти" Foreground="Black" Click="Exit_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Таблицы" Foreground="Yellow">
+                        <MenuItem x:Name="Employee" Header="Сотрудник" Foreground="Black" Click="Employee_Click"/>
+                        <MenuItem x:Name="Documents" Header="Документы" Foreground="Black" Click="Documents_Click"/>
+                        <MenuItem x:Name="Authorization" Header="Авторизация" Foreground="Black" Click="Authorization_Click"/>
+                        <MenuItem x:Name="WorkSchedule" Header="График работы" Foreground="Black" Click="WorkSchedule_Click"/>
+                        <MenuItem x:Name="EmployeeSalaries" Header="Зарплаты сотрудников" Foreground="Black" Click="EmployeeSalaries_Click"/>
+                        <MenuItem x:Name="Post" Header="Должности" Foreground="Black" Click="Post_Click"/>
+                        <MenuItem x:Name="Room" Header="Помещение" Foreground="Black" Click="Room_Click"/>
+                        <MenuItem x:Name="Class" Header="Классы" Foreground="Black" Click="Class_Click"/>
+                        <MenuItem x:Name="Item" Header="Предметы" Foreground="Black" Click="Item_Click"/>
+                        <MenuItem x:Name="HoursTaught" Header="Преподаваемые часы" Foreground="Black" Click="HoursTaught_Click"/>
+                        <MenuItem x:Name="SubjectsTaught" Header="Преподаваемые предметы" Foreground="Black" Click="SubjectsTaught_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Данные" Foreground="Yellow">
+                        <MenuItem Header="Резервное копирование" Foreground="Black">
+                            <MenuItem x:Name="FullBackUp" Header="Полное копирование" Foreground="Black" Click="FullBackUp_Click"/>
+                            <MenuItem x:Name="DifferentialBackUp" Header="Разностное копирование" Foreground="Black" Click="DifferentialBackUp_Click"/>
+                            <MenuItem x:Name="TransactionLogBackUp" Header="Резервное копирование журнала транзакции" Foreground="Black" Click="TransactionLogBackUp_Click"/>
+                        </MenuItem>
+                        <MenuItem x:Name="Restore" Header="Восстановить" Foreground="Black" Click="Restore_Click"/>
+                    </MenuItem>
+                </Menu>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Right" Margin="10,0,10,0">
+                <Label x:Name="UserName" Margin="0,0,10,0" Content="ФИО" HorizontalAlignment="Right" FontSize="16" Foreground="Yellow"/>
+            </WrapPanel>
+        </Grid>
+        <Grid Margin="10,45,10,10" HorizontalAlignment="Center">
+            <StackPanel>
+                <Grid>
+                    <WrapPanel Margin="0,0,0,10">
+                        <Label Content="Текущая таблицы : " FontSize="14"/>
+                        <Label x:Name="SelectedTable" Content="таблица не выбрана " FontSize="14"/>
+                    </WrapPanel>
+                    <Button x:Name="Update" Content=" ↻ " HorizontalAlignment="Right" FontSize="14" Height="25" Click="Update_Click"/>
+                </Grid>
+                <DataGrid x:Name="TabularData" Margin="0,0,0,10" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Top" Height="500" Width="1240" ColumnWidth="*" FontSize="14" RowEditEnding="TabularData_RowEditEnding">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="RemoveRow" Header="Удалить" Click="Remove_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>
+                <WrapPanel HorizontalAlignment="Left">
+                    <Button x:Name="Save" Content="Сохранить" Margin="0,0,10,0" FontSize="14" Width="180" Click="Save_Click"/>
+                    <Button x:Name="Remove" Content="Удалить" Margin="0,0,10,0" FontSize="14" Width="180" Click="Remove_Click"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

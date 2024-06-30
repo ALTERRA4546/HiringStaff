@@ -39,7 +39,7 @@ namespace HiringStaff
         // Переменая для хранениея статуса изменения преподоваемых предметов
         public bool changeItem = false;
 
-        // Патерн для List itemList
+        // Паттерн для List itemList
         public class Items
         {
             public int Код_предмета { get; set; }
@@ -109,7 +109,8 @@ namespace HiringStaff
                                            documents.Серия_паспорта,
                                            documents.Номер_паспорта,
                                            documents.ИНН,
-                                           documents.Номер_медицинского_полюса,
+                                           documents.СНИЛС,
+                                           documents.Номер_медицинского_полиса,
                                            documents.Фотография,
                                            documents.Номер_трудового_договора,
                                            documents.Срок_действия_договора,
@@ -133,7 +134,8 @@ namespace HiringStaff
                     PassportSeries.Text = employeeData.Серия_паспорта.ToString();
                     PassportNumber.Text = employeeData.Номер_паспорта.ToString();
                     INN.Text = employeeData.ИНН.ToString();
-                    MedicalPoleNumber.Text = employeeData.Номер_медицинского_полюса.ToString();
+                    SNILS.Text = employeeData.СНИЛС.ToString();
+                    MedicalPoleNumber.Text = employeeData.Номер_медицинского_полиса.ToString();
                     NumberfEmploymentContract.Text = employeeData.Номер_трудового_договора.ToString();
                     TermAgreement.Text = employeeData.Срок_действия_договора.ToString();
                     if (employeeData.Помещение != null)
@@ -147,6 +149,7 @@ namespace HiringStaff
                     Login.Text = employeeData.Логин;
                     Password.Text = employeeData.Пароль;
 
+                    // Загрузка фотографии
                     if (employeeData.Фотография != null)
                     {
                         byte[] imageData = employeeData.Фотография;
@@ -194,8 +197,8 @@ namespace HiringStaff
                 MessageBox.Show("Данные не введены", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            string patern = @"^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$";
-            if (Regex.IsMatch(Phone.Text.ToString(),patern) == false)
+            string pattern = @"^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$";
+            if (Regex.IsMatch(Phone.Text.ToString(), pattern) == false)
             {
                 MessageBox.Show("Номер телефона введен в неверном формате (+7(999)999-99-99)", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -225,7 +228,7 @@ namespace HiringStaff
                 MessageBox.Show("Формат ИНН указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if (UInt64.TryParse(SNILS.Text, out _) == false || SNILS.Text.Length == 11)
+            if (UInt64.TryParse(SNILS.Text, out _) == false || SNILS.Text.Length != 11)
             {
                 MessageBox.Show("Формат СНИЛС указан не верно", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -261,8 +264,10 @@ namespace HiringStaff
                     return;
                 }
 
+                // Определение формата записи (добавление или редактирование)
                 if (TempData.selectedEmployee == -1)
                 {
+                    // Добавление нового сотрудника
                     var employee = new Сотрудник();
                     employee.Фамилия = Surname.Text;
                     employee.Имя = Name.Text;
@@ -284,7 +289,7 @@ namespace HiringStaff
                     documents.Номер_паспорта = Convert.ToInt32(PassportNumber.Text);
                     documents.ИНН = Convert.ToInt64(INN.Text);
                     documents.СНИЛС = Convert.ToInt64(SNILS.Text);
-                    documents.Номер_медицинского_полюса = Convert.ToInt64(MedicalPoleNumber.Text);
+                    documents.Номер_медицинского_полиса = Convert.ToInt64(MedicalPoleNumber.Text);
                     documents.Номер_трудового_договора = Convert.ToInt64(NumberfEmploymentContract.Text);
                     documents.Срок_действия_договора = Convert.ToInt32(TermAgreement.Text);
                     if (photoPath != null)
@@ -331,6 +336,7 @@ namespace HiringStaff
                 }
                 else
                 {
+                    // Сохранение изменений данных сотрудника
                     var employee = dataBase.Сотрудник.FirstOrDefault(x=>x.Код_сотрудника == TempData.selectedEmployee);
                     employee.Фамилия = Surname.Text;
                     employee.Имя = Name.Text;
@@ -348,7 +354,7 @@ namespace HiringStaff
                     documents.Серия_паспорта = Convert.ToInt32(PassportSeries.Text);
                     documents.Номер_паспорта = Convert.ToInt32(PassportNumber.Text);
                     documents.ИНН = Convert.ToInt64(INN.Text);
-                    documents.Номер_медицинского_полюса = Convert.ToInt64(MedicalPoleNumber.Text);
+                    documents.Номер_медицинского_полиса = Convert.ToInt64(MedicalPoleNumber.Text);
                     documents.Номер_трудового_договора = Convert.ToInt64(NumberfEmploymentContract.Text);
                     documents.Срок_действия_договора = Convert.ToInt32(TermAgreement.Text);
                     if (photoPath != null)

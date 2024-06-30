@@ -29,7 +29,7 @@ namespace HiringStaff
         public virtual DbSet<График_работы> График_работы { get; set; }
         public virtual DbSet<Документы> Документы { get; set; }
         public virtual DbSet<Должность> Должность { get; set; }
-        public virtual DbSet<Зарплата> Зарплата { get; set; }
+        public virtual DbSet<Зарплаты_сотрудников> Зарплаты_сотрудников { get; set; }
         public virtual DbSet<Классы> Классы { get; set; }
         public virtual DbSet<Помещение> Помещение { get; set; }
         public virtual DbSet<Предмет> Предмет { get; set; }

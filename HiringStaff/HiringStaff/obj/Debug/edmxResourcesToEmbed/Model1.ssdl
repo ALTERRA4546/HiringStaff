@@ -28,7 +28,7 @@
     <Property Name="Номер паспорта" Type="int" Nullable="false" />
     <Property Name="ИНН" Type="bigint" Nullable="false" />
     <Property Name="СНИЛС" Type="bigint" Nullable="false" />
-    <Property Name="Номер медицинского полюса" Type="bigint" Nullable="false" />
+    <Property Name="Номер медицинского полиса" Type="bigint" Nullable="false" />
     <Property Name="Фотография" Type="varbinary(max)" />
     <Property Name="Номер трудового договора" Type="bigint" />
     <Property Name="Срок действия договора" Type="int" />
@@ -40,7 +40,7 @@
     <Property Name="Код должности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Наименование" Type="nvarchar" MaxLength="250" Nullable="false" />
   </EntityType>
-  <EntityType Name="Зарплата">
+  <EntityType Name="Зарплаты сотрудников">
     <Key>
       <PropertyRef Name="Код зарплаты" />
     </Key>
@@ -151,14 +151,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Зарплата_Должность">
+  <Association Name="FK_Зарплаты сотрудников_Должность">
     <End Role="Должность" Type="Self.Должность" Multiplicity="1" />
-    <End Role="Зарплата" Type="Self.Зарплата" Multiplicity="*" />
+    <End Role="Зарплаты сотрудников" Type="Self.Зарплаты сотрудников" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Должность">
         <PropertyRef Name="Код должности" />
       </Principal>
-      <Dependent Role="Зарплата">
+      <Dependent Role="Зарплаты сотрудников">
         <PropertyRef Name="Код должности" />
       </Dependent>
     </ReferentialConstraint>
@@ -266,7 +266,7 @@
     <EntitySet Name="График работы" EntityType="Self.График работы" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Документы" EntityType="Self.Документы" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Должность" EntityType="Self.Должность" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Зарплата" EntityType="Self.Зарплата" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Зарплаты сотрудников" EntityType="Self.Зарплаты сотрудников" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Классы" EntityType="Self.Классы" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Помещение" EntityType="Self.Помещение" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Предмет" EntityType="Self.Предмет" Schema="dbo" store:Type="Tables" />
@@ -285,9 +285,9 @@
       <End Role="Сотрудник" EntitySet="Сотрудник" />
       <End Role="Документы" EntitySet="Документы" />
     </AssociationSet>
-    <AssociationSet Name="FK_Зарплата_Должность" Association="Self.FK_Зарплата_Должность">
+    <AssociationSet Name="FK_Зарплаты сотрудников_Должность" Association="Self.FK_Зарплаты сотрудников_Должность">
       <End Role="Должность" EntitySet="Должность" />
-      <End Role="Зарплата" EntitySet="Зарплата" />
+      <End Role="Зарплаты сотрудников" EntitySet="Зарплаты сотрудников" />
     </AssociationSet>
     <AssociationSet Name="FK_Классы_Помещение" Association="Self.FK_Классы_Помещение">
       <End Role="Помещение" EntitySet="Помещение" />

@@ -15,11 +15,13 @@
             <StackPanel>
                 <Grid Margin="0,0,0,10">
                     <Label Content="Логин" FontSize="14"/>
-                    <TextBox x:Name="Login" Text="iva" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="250"/>
+                    <TextBox x:Name="Login" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="250"/>
                 </Grid>
                 <Grid Margin="0,0,0,10">
                     <Label Content="Пароль" FontSize="14"/>
-                    <TextBox x:Name="Password" Text="iva" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="250"/>
+                    <TextBox x:Name="Password" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="222" TextChanged="Password_TextChanged"/>
+                    <PasswordBox x:Name="HidePassword" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="222" PasswordChanged="HidePassword_PasswordChanged"/>
+                    <Button x:Name="ShowPassword" Content=" 👁 " HorizontalAlignment="Left" Margin="303,0,0,0" Click="ShowPassword_Click"/>
                 </Grid>
                 <Button x:Name="Enter" Content="Войти" Width="330" FontSize="14" Click="Enter_Click"/>
             </StackPanel>

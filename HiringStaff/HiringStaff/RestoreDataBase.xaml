@@ -1,0 +1,38 @@
+﻿<Window x:Class="HiringStaff.RestoreDataBase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HiringStaff"
+        mc:Ignorable="d"
+        Title="HiringStaff" Height="300" Width="400">
+    <Grid>
+        <Grid>
+            <Rectangle VerticalAlignment="Top" Width="400" Height="40" Fill="Black"/>
+            <Label Content="Восстановление" HorizontalAlignment="Center" FontSize="20" Foreground="Yellow"/>
+        </Grid>
+        <Grid Margin="10,50,10,10" HorizontalAlignment="Center">
+            <StackPanel>
+                <Label Content="Полное восстановление базы данных" FontSize="14"/>
+                <WrapPanel>
+                    <CheckBox x:Name="СheckingFullRestore" Margin="0,3,10,0" FontSize="14" Click="СheckingFullRestore_Click"/>
+                    <TextBox x:Name="PathFullRestore" Text="" FontSize="14" HorizontalAlignment="Left" Width="245"/>
+                    <Button x:Name="SelectedPathFullRestore" Content="Обзор" FontSize="14" HorizontalAlignment="Left" Width="60" Click="SelectedPathFullRestore_Click"/>
+                </WrapPanel>
+                <Label Content="Разностное восстановление базы данных" FontSize="14"/>
+                <WrapPanel>
+                    <CheckBox x:Name="СheckingDifferentialRestore" Margin="0,3,10,0" FontSize="14" Click="СheckingDifferentialRestore_Click"/>
+                    <TextBox x:Name="PathDifferentialRestore" Text="" FontSize="14" HorizontalAlignment="Left" Width="245"/>
+                    <Button x:Name="SelectedPathDifferentialRestore" Content="Обзор" FontSize="14" HorizontalAlignment="Left" Width="60" Click="SelectedPathDifferentialRestore_Click"/>
+                </WrapPanel>
+                <Label Content="Восстановление журнала транзакций" FontSize="14"/>
+                <WrapPanel Margin="0,0,0,10">
+                    <CheckBox x:Name="СheckingTransactionLogRestore" Margin="0,3,10,0" FontSize="14" Click="СheckingTransactionLogRestore_Click"/>
+                    <TextBox x:Name="PathTransactionLogRestore" Text="" FontSize="14" HorizontalAlignment="Left" Width="245"/>
+                    <Button x:Name="SelectedPathTransactionLogRestore" Content="Обзор" FontSize="14" HorizontalAlignment="Left" Width="60" Click="SelectedPathTransactionLogRestore_Click"/>
+                </WrapPanel>
+                <Button x:Name="Restore" Content="Восстановить" Width="330" FontSize="14" Click="Restore_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

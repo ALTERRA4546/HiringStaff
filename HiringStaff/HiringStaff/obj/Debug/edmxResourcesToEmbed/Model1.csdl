@@ -5,7 +5,7 @@
     <EntitySet Name="График_работы" EntityType="HiringStaffModel.График_работы" />
     <EntitySet Name="Документы" EntityType="HiringStaffModel.Документы" />
     <EntitySet Name="Должность" EntityType="HiringStaffModel.Должность" />
-    <EntitySet Name="Зарплата" EntityType="HiringStaffModel.Зарплата" />
+    <EntitySet Name="Зарплаты_сотрудников" EntityType="HiringStaffModel.Зарплаты_сотрудников" />
     <EntitySet Name="Классы" EntityType="HiringStaffModel.Классы" />
     <EntitySet Name="Помещение" EntityType="HiringStaffModel.Помещение" />
     <EntitySet Name="Предмет" EntityType="HiringStaffModel.Предмет" />
@@ -24,9 +24,9 @@
       <End Role="Сотрудник" EntitySet="Сотрудник" />
       <End Role="Документы" EntitySet="Документы" />
     </AssociationSet>
-    <AssociationSet Name="FK_Зарплата_Должность" Association="HiringStaffModel.FK_Зарплата_Должность">
+    <AssociationSet Name="FK_Зарплаты_сотрудников_Должность" Association="HiringStaffModel.FK_Зарплаты_сотрудников_Должность">
       <End Role="Должность" EntitySet="Должность" />
-      <End Role="Зарплата" EntitySet="Зарплата" />
+      <End Role="Зарплаты_сотрудников" EntitySet="Зарплаты_сотрудников" />
     </AssociationSet>
     <AssociationSet Name="FK_Сотрудник_Должность" Association="HiringStaffModel.FK_Сотрудник_Должность">
       <End Role="Должность" EntitySet="Должность" />
@@ -91,7 +91,7 @@
     <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
     <Property Name="ИНН" Type="Int64" Nullable="false" />
     <Property Name="СНИЛС" Type="Int64" Nullable="false" />
-    <Property Name="Номер_медицинского_полюса" Type="Int64" Nullable="false" />
+    <Property Name="Номер_медицинского_полиса" Type="Int64" Nullable="false" />
     <Property Name="Фотография" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Номер_трудового_договора" Type="Int64" />
     <Property Name="Срок_действия_договора" Type="Int32" />
@@ -103,18 +103,18 @@
     </Key>
     <Property Name="Код_должности" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Наименование" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Зарплата" Relationship="HiringStaffModel.FK_Зарплата_Должность" FromRole="Должность" ToRole="Зарплата" />
+    <NavigationProperty Name="Зарплаты_сотрудников" Relationship="HiringStaffModel.FK_Зарплаты_сотрудников_Должность" FromRole="Должность" ToRole="Зарплаты_сотрудников" />
     <NavigationProperty Name="Сотрудник" Relationship="HiringStaffModel.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
   </EntityType>
-  <EntityType Name="Зарплата">
+  <EntityType Name="Зарплаты_сотрудников">
     <Key>
       <PropertyRef Name="Код_зарплаты" />
     </Key>
     <Property Name="Код_зарплаты" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Код_должности" Type="Int32" Nullable="false" />
     <Property Name="Стаж" Type="Int32" Nullable="false" />
-    <Property Name="Зарплата1" Type="Double" Nullable="false" />
-    <NavigationProperty Name="Должность" Relationship="HiringStaffModel.FK_Зарплата_Должность" FromRole="Зарплата" ToRole="Должность" />
+    <Property Name="Зарплата" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Должность" Relationship="HiringStaffModel.FK_Зарплаты_сотрудников_Должность" FromRole="Зарплаты_сотрудников" ToRole="Должность" />
   </EntityType>
   <EntityType Name="Классы">
     <Key>
@@ -236,14 +236,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Зарплата_Должность">
+  <Association Name="FK_Зарплаты_сотрудников_Должность">
     <End Type="HiringStaffModel.Должность" Role="Должность" Multiplicity="1" />
-    <End Type="HiringStaffModel.Зарплата" Role="Зарплата" Multiplicity="*" />
+    <End Type="HiringStaffModel.Зарплаты_сотрудников" Role="Зарплаты_сотрудников" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Должность">
         <PropertyRef Name="Код_должности" />
       </Principal>
-      <Dependent Role="Зарплата">
+      <Dependent Role="Зарплаты_сотрудников">
         <PropertyRef Name="Код_должности" />
       </Dependent>
     </ReferentialConstraint>

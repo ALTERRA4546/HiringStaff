@@ -33,7 +33,7 @@
           <Property Name="Номер паспорта" Type="int" Nullable="false" />
           <Property Name="ИНН" Type="bigint" Nullable="false" />
           <Property Name="СНИЛС" Type="bigint" Nullable="false" />
-          <Property Name="Номер медицинского полюса" Type="bigint" Nullable="false" />
+          <Property Name="Номер медицинского полиса" Type="bigint" Nullable="false" />
           <Property Name="Фотография" Type="varbinary(max)" />
           <Property Name="Номер трудового договора" Type="bigint" />
           <Property Name="Срок действия договора" Type="int" />
@@ -45,7 +45,7 @@
           <Property Name="Код должности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Наименование" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
-        <EntityType Name="Зарплата">
+        <EntityType Name="Зарплаты сотрудников">
           <Key>
             <PropertyRef Name="Код зарплаты" />
           </Key>
@@ -156,14 +156,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Зарплата_Должность">
+        <Association Name="FK_Зарплаты сотрудников_Должность">
           <End Role="Должность" Type="Self.Должность" Multiplicity="1" />
-          <End Role="Зарплата" Type="Self.Зарплата" Multiplicity="*" />
+          <End Role="Зарплаты сотрудников" Type="Self.Зарплаты сотрудников" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Должность">
               <PropertyRef Name="Код должности" />
             </Principal>
-            <Dependent Role="Зарплата">
+            <Dependent Role="Зарплаты сотрудников">
               <PropertyRef Name="Код должности" />
             </Dependent>
           </ReferentialConstraint>
@@ -271,7 +271,7 @@
           <EntitySet Name="График работы" EntityType="Self.График работы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Документы" EntityType="Self.Документы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Должность" EntityType="Self.Должность" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Зарплата" EntityType="Self.Зарплата" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Зарплаты сотрудников" EntityType="Self.Зарплаты сотрудников" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Классы" EntityType="Self.Классы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Помещение" EntityType="Self.Помещение" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Предмет" EntityType="Self.Предмет" Schema="dbo" store:Type="Tables" />
@@ -290,9 +290,9 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Документы" EntitySet="Документы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Зарплата_Должность" Association="Self.FK_Зарплата_Должность">
+          <AssociationSet Name="FK_Зарплаты сотрудников_Должность" Association="Self.FK_Зарплаты сотрудников_Должность">
             <End Role="Должность" EntitySet="Должность" />
-            <End Role="Зарплата" EntitySet="Зарплата" />
+            <End Role="Зарплаты сотрудников" EntitySet="Зарплаты сотрудников" />
           </AssociationSet>
           <AssociationSet Name="FK_Классы_Помещение" Association="Self.FK_Классы_Помещение">
             <End Role="Помещение" EntitySet="Помещение" />
@@ -336,7 +336,7 @@
           <EntitySet Name="График_работы" EntityType="HiringStaffModel.График_работы" />
           <EntitySet Name="Документы" EntityType="HiringStaffModel.Документы" />
           <EntitySet Name="Должность" EntityType="HiringStaffModel.Должность" />
-          <EntitySet Name="Зарплата" EntityType="HiringStaffModel.Зарплата" />
+          <EntitySet Name="Зарплаты_сотрудников" EntityType="HiringStaffModel.Зарплаты_сотрудников" />
           <EntitySet Name="Классы" EntityType="HiringStaffModel.Классы" />
           <EntitySet Name="Помещение" EntityType="HiringStaffModel.Помещение" />
           <EntitySet Name="Предмет" EntityType="HiringStaffModel.Предмет" />
@@ -355,9 +355,9 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Документы" EntitySet="Документы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Зарплата_Должность" Association="HiringStaffModel.FK_Зарплата_Должность">
+          <AssociationSet Name="FK_Зарплаты_сотрудников_Должность" Association="HiringStaffModel.FK_Зарплаты_сотрудников_Должность">
             <End Role="Должность" EntitySet="Должность" />
-            <End Role="Зарплата" EntitySet="Зарплата" />
+            <End Role="Зарплаты_сотрудников" EntitySet="Зарплаты_сотрудников" />
           </AssociationSet>
           <AssociationSet Name="FK_Сотрудник_Должность" Association="HiringStaffModel.FK_Сотрудник_Должность">
             <End Role="Должность" EntitySet="Должность" />
@@ -422,7 +422,7 @@
           <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
           <Property Name="ИНН" Type="Int64" Nullable="false" />
           <Property Name="СНИЛС" Type="Int64" Nullable="false" />
-          <Property Name="Номер_медицинского_полюса" Type="Int64" Nullable="false" />
+          <Property Name="Номер_медицинского_полиса" Type="Int64" Nullable="false" />
           <Property Name="Фотография" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Номер_трудового_договора" Type="Int64" />
           <Property Name="Срок_действия_договора" Type="Int32" />
@@ -434,18 +434,18 @@
           </Key>
           <Property Name="Код_должности" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Наименование" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Зарплата" Relationship="HiringStaffModel.FK_Зарплата_Должность" FromRole="Должность" ToRole="Зарплата" />
+          <NavigationProperty Name="Зарплаты_сотрудников" Relationship="HiringStaffModel.FK_Зарплаты_сотрудников_Должность" FromRole="Должность" ToRole="Зарплаты_сотрудников" />
           <NavigationProperty Name="Сотрудник" Relationship="HiringStaffModel.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
         </EntityType>
-        <EntityType Name="Зарплата">
+        <EntityType Name="Зарплаты_сотрудников">
           <Key>
             <PropertyRef Name="Код_зарплаты" />
           </Key>
           <Property Name="Код_зарплаты" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Код_должности" Type="Int32" Nullable="false" />
           <Property Name="Стаж" Type="Int32" Nullable="false" />
-          <Property Name="Зарплата1" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Должность" Relationship="HiringStaffModel.FK_Зарплата_Должность" FromRole="Зарплата" ToRole="Должность" />
+          <Property Name="Зарплата" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Должность" Relationship="HiringStaffModel.FK_Зарплаты_сотрудников_Должность" FromRole="Зарплаты_сотрудников" ToRole="Должность" />
         </EntityType>
         <EntityType Name="Классы">
           <Key>
@@ -567,14 +567,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Зарплата_Должность">
+        <Association Name="FK_Зарплаты_сотрудников_Должность">
           <End Type="HiringStaffModel.Должность" Role="Должность" Multiplicity="1" />
-          <End Type="HiringStaffModel.Зарплата" Role="Зарплата" Multiplicity="*" />
+          <End Type="HiringStaffModel.Зарплаты_сотрудников" Role="Зарплаты_сотрудников" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Должность">
               <PropertyRef Name="Код_должности" />
             </Principal>
-            <Dependent Role="Зарплата">
+            <Dependent Role="Зарплаты_сотрудников">
               <PropertyRef Name="Код_должности" />
             </Dependent>
           </ReferentialConstraint>
@@ -709,7 +709,7 @@
                 <ScalarProperty Name="Срок_действия_договора" ColumnName="Срок действия договора" />
                 <ScalarProperty Name="Номер_трудового_договора" ColumnName="Номер трудового договора" />
                 <ScalarProperty Name="Фотография" ColumnName="Фотография" />
-                <ScalarProperty Name="Номер_медицинского_полюса" ColumnName="Номер медицинского полюса" />
+                <ScalarProperty Name="Номер_медицинского_полиса" ColumnName="Номер медицинского полиса" />
                 <ScalarProperty Name="СНИЛС" ColumnName="СНИЛС" />
                 <ScalarProperty Name="ИНН" ColumnName="ИНН" />
                 <ScalarProperty Name="Номер_паспорта" ColumnName="Номер паспорта" />
@@ -727,10 +727,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Зарплата">
-            <EntityTypeMapping TypeName="HiringStaffModel.Зарплата">
-              <MappingFragment StoreEntitySet="Зарплата">
-                <ScalarProperty Name="Зарплата1" ColumnName="Зарплата" />
+          <EntitySetMapping Name="Зарплаты_сотрудников">
+            <EntityTypeMapping TypeName="HiringStaffModel.Зарплаты_сотрудников">
+              <MappingFragment StoreEntitySet="Зарплаты сотрудников">
+                <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
                 <ScalarProperty Name="Стаж" ColumnName="Стаж" />
                 <ScalarProperty Name="Код_должности" ColumnName="Код должности" />
                 <ScalarProperty Name="Код_зарплаты" ColumnName="Код зарплаты" />

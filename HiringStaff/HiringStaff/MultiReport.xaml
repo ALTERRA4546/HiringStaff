@@ -1,0 +1,33 @@
+﻿<Window x:Class="HiringStaff.MultiReport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HiringStaff"
+        mc:Ignorable="d"
+        Title="HiringStaff" Height="670" Width="1280" Loaded="Window_Loaded">
+    <Grid>
+        <Grid>
+            <Rectangle VerticalAlignment="Top" Width="1280" Height="35" Fill="Black"/>
+            <Label Content="Отчет" HorizontalAlignment="Center" FontSize="16" Foreground="Yellow"/>
+        </Grid>
+        <Grid Margin="10,45,10,10" HorizontalAlignment="Center">
+            <StackPanel>
+                <Grid Margin="0,0,0,10">
+                    <WrapPanel HorizontalAlignment="Right">
+                        <Label x:Name="ReportName" Content="Название отчета" FontSize="14"/>
+                    </WrapPanel>
+                    <WrapPanel x:Name="YearPanel" >
+                        <CheckBox x:Name="ChekedSelectedYear" Margin="0,7,0,0" FontSize="14" Click="ChekedSelectedYear_Click" />
+                        <Label Content="Год :" FontSize="14"/>
+                        <ComboBox x:Name="SelectedYear" FontSize="14" Width="150" SelectionChanged="SelectedYear_SelectionChanged" />
+                    </WrapPanel>
+                </Grid>
+                <DataGrid x:Name="ReportData" Margin="0,0,0,10" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Top" Height="500" Width="1240" ColumnWidth="*" FontSize="14"/>
+                <WrapPanel HorizontalAlignment="Left">
+                    <Button x:Name="Export" Content="Экспортировать" Margin="0,0,10,0" FontSize="14" Width="180" Click="Export_Click"/>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
