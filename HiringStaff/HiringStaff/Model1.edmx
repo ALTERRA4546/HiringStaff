@@ -33,7 +33,7 @@
           <Property Name="Номер паспорта" Type="int" Nullable="false" />
           <Property Name="ИНН" Type="bigint" Nullable="false" />
           <Property Name="СНИЛС" Type="bigint" Nullable="false" />
-          <Property Name="Номер медицинского полюса" Type="bigint" Nullable="false" />
+          <Property Name="Номер медицинского полиса" Type="bigint" Nullable="false" />
           <Property Name="Фотография" Type="varbinary(max)" />
           <Property Name="Номер трудового договора" Type="bigint" />
           <Property Name="Срок действия договора" Type="int" />
@@ -45,7 +45,7 @@
           <Property Name="Код должности" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Наименование" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
-        <EntityType Name="Зарплата">
+        <EntityType Name="Зарплаты сотрудников">
           <Key>
             <PropertyRef Name="Код зарплаты" />
           </Key>
@@ -70,7 +70,7 @@
           </Key>
           <Property Name="Код помещения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Наименование" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="Код отвественного сотрудника" Type="int" />
+          <Property Name="Код ответственного сотрудника" Type="int" />
           <Property Name="Площадь" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Предмет">
@@ -88,7 +88,7 @@
           <Property Name="Код учителя" Type="int" Nullable="false" />
           <Property Name="Код предмета" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Преподоваемые часы">
+        <EntityType Name="Преподаваемые часы">
           <Key>
             <PropertyRef Name="Код преподаваемых часов" />
           </Key>
@@ -156,14 +156,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Зарплата_Должность">
+        <Association Name="FK_Зарплаты сотрудников_Должность">
           <End Role="Должность" Type="Self.Должность" Multiplicity="1" />
-          <End Role="Зарплата" Type="Self.Зарплата" Multiplicity="*" />
+          <End Role="Зарплаты сотрудников" Type="Self.Зарплаты сотрудников" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Должность">
               <PropertyRef Name="Код должности" />
             </Principal>
-            <Dependent Role="Зарплата">
+            <Dependent Role="Зарплаты сотрудников">
               <PropertyRef Name="Код должности" />
             </Dependent>
           </ReferentialConstraint>
@@ -202,7 +202,7 @@
               <PropertyRef Name="Код сотрудника" />
             </Principal>
             <Dependent Role="Помещение">
-              <PropertyRef Name="Код отвественного сотрудника" />
+              <PropertyRef Name="Код ответственного сотрудника" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -230,26 +230,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Преподоваемые часы_Классы">
+        <Association Name="FK_Преподаваемые часы_Классы">
           <End Role="Классы" Type="Self.Классы" Multiplicity="1" />
-          <End Role="Преподоваемые часы" Type="Self.Преподоваемые часы" Multiplicity="*" />
+          <End Role="Преподаваемые часы" Type="Self.Преподаваемые часы" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Классы">
               <PropertyRef Name="Код класса" />
             </Principal>
-            <Dependent Role="Преподоваемые часы">
+            <Dependent Role="Преподаваемые часы">
               <PropertyRef Name="Код класса" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Преподоваемые часы_Предмет">
+        <Association Name="FK_Преподаваемые часы_Предмет">
           <End Role="Предмет" Type="Self.Предмет" Multiplicity="1" />
-          <End Role="Преподоваемые часы" Type="Self.Преподоваемые часы" Multiplicity="*" />
+          <End Role="Преподаваемые часы" Type="Self.Преподаваемые часы" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Предмет">
               <PropertyRef Name="Код предмета" />
             </Principal>
-            <Dependent Role="Преподоваемые часы">
+            <Dependent Role="Преподаваемые часы">
               <PropertyRef Name="Код предмета" />
             </Dependent>
           </ReferentialConstraint>
@@ -271,12 +271,12 @@
           <EntitySet Name="График работы" EntityType="Self.График работы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Документы" EntityType="Self.Документы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Должность" EntityType="Self.Должность" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Зарплата" EntityType="Self.Зарплата" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Зарплаты сотрудников" EntityType="Self.Зарплаты сотрудников" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Классы" EntityType="Self.Классы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Помещение" EntityType="Self.Помещение" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Предмет" EntityType="Self.Предмет" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Преподаваемые предметы" EntityType="Self.Преподаваемые предметы" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Преподоваемые часы" EntityType="Self.Преподоваемые часы" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Преподаваемые часы" EntityType="Self.Преподаваемые часы" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Авторизация_Сотрудник" Association="Self.FK_Авторизация_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
@@ -290,9 +290,9 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Документы" EntitySet="Документы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Зарплата_Должность" Association="Self.FK_Зарплата_Должность">
+          <AssociationSet Name="FK_Зарплаты сотрудников_Должность" Association="Self.FK_Зарплаты сотрудников_Должность">
             <End Role="Должность" EntitySet="Должность" />
-            <End Role="Зарплата" EntitySet="Зарплата" />
+            <End Role="Зарплаты сотрудников" EntitySet="Зарплаты сотрудников" />
           </AssociationSet>
           <AssociationSet Name="FK_Классы_Помещение" Association="Self.FK_Классы_Помещение">
             <End Role="Помещение" EntitySet="Помещение" />
@@ -314,13 +314,13 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Преподаваемые предметы" EntitySet="Преподаваемые предметы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Преподоваемые часы_Классы" Association="Self.FK_Преподоваемые часы_Классы">
+          <AssociationSet Name="FK_Преподаваемые часы_Классы" Association="Self.FK_Преподаваемые часы_Классы">
             <End Role="Классы" EntitySet="Классы" />
-            <End Role="Преподоваемые часы" EntitySet="Преподоваемые часы" />
+            <End Role="Преподаваемые часы" EntitySet="Преподаваемые часы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Преподоваемые часы_Предмет" Association="Self.FK_Преподоваемые часы_Предмет">
+          <AssociationSet Name="FK_Преподаваемые часы_Предмет" Association="Self.FK_Преподаваемые часы_Предмет">
             <End Role="Предмет" EntitySet="Предмет" />
-            <End Role="Преподоваемые часы" EntitySet="Преподоваемые часы" />
+            <End Role="Преподаваемые часы" EntitySet="Преподаваемые часы" />
           </AssociationSet>
           <AssociationSet Name="FK_Сотрудник_Должность" Association="Self.FK_Сотрудник_Должность">
             <End Role="Должность" EntitySet="Должность" />
@@ -336,12 +336,12 @@
           <EntitySet Name="График_работы" EntityType="HiringStaffModel.График_работы" />
           <EntitySet Name="Документы" EntityType="HiringStaffModel.Документы" />
           <EntitySet Name="Должность" EntityType="HiringStaffModel.Должность" />
-          <EntitySet Name="Зарплата" EntityType="HiringStaffModel.Зарплата" />
+          <EntitySet Name="Зарплаты_сотрудников" EntityType="HiringStaffModel.Зарплаты_сотрудников" />
           <EntitySet Name="Классы" EntityType="HiringStaffModel.Классы" />
           <EntitySet Name="Помещение" EntityType="HiringStaffModel.Помещение" />
           <EntitySet Name="Предмет" EntityType="HiringStaffModel.Предмет" />
           <EntitySet Name="Преподаваемые_предметы" EntityType="HiringStaffModel.Преподаваемые_предметы" />
-          <EntitySet Name="Преподоваемые_часы" EntityType="HiringStaffModel.Преподоваемые_часы" />
+          <EntitySet Name="Преподаваемые_часы" EntityType="HiringStaffModel.Преподаваемые_часы" />
           <EntitySet Name="Сотрудник" EntityType="HiringStaffModel.Сотрудник" />
           <AssociationSet Name="FK_Авторизация_Сотрудник" Association="HiringStaffModel.FK_Авторизация_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
@@ -355,9 +355,9 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Документы" EntitySet="Документы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Зарплата_Должность" Association="HiringStaffModel.FK_Зарплата_Должность">
+          <AssociationSet Name="FK_Зарплаты_сотрудников_Должность" Association="HiringStaffModel.FK_Зарплаты_сотрудников_Должность">
             <End Role="Должность" EntitySet="Должность" />
-            <End Role="Зарплата" EntitySet="Зарплата" />
+            <End Role="Зарплаты_сотрудников" EntitySet="Зарплаты_сотрудников" />
           </AssociationSet>
           <AssociationSet Name="FK_Сотрудник_Должность" Association="HiringStaffModel.FK_Сотрудник_Должность">
             <End Role="Должность" EntitySet="Должность" />
@@ -371,9 +371,9 @@
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Классы" EntitySet="Классы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Преподоваемые_часы_Классы" Association="HiringStaffModel.FK_Преподоваемые_часы_Классы">
+          <AssociationSet Name="FK_Преподаваемые_часы_Классы" Association="HiringStaffModel.FK_Преподаваемые_часы_Классы">
             <End Role="Классы" EntitySet="Классы" />
-            <End Role="Преподоваемые_часы" EntitySet="Преподоваемые_часы" />
+            <End Role="Преподаваемые_часы" EntitySet="Преподаваемые_часы" />
           </AssociationSet>
           <AssociationSet Name="FK_Помещение_Сотрудник" Association="HiringStaffModel.FK_Помещение_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
@@ -383,9 +383,9 @@
             <End Role="Предмет" EntitySet="Предмет" />
             <End Role="Преподаваемые_предметы" EntitySet="Преподаваемые_предметы" />
           </AssociationSet>
-          <AssociationSet Name="FK_Преподоваемые_часы_Предмет" Association="HiringStaffModel.FK_Преподоваемые_часы_Предмет">
+          <AssociationSet Name="FK_Преподаваемые_часы_Предмет" Association="HiringStaffModel.FK_Преподаваемые_часы_Предмет">
             <End Role="Предмет" EntitySet="Предмет" />
-            <End Role="Преподоваемые_часы" EntitySet="Преподоваемые_часы" />
+            <End Role="Преподаваемые_часы" EntitySet="Преподаваемые_часы" />
           </AssociationSet>
           <AssociationSet Name="FK_Преподаваемые_предметы_Сотрудник" Association="HiringStaffModel.FK_Преподаваемые_предметы_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
@@ -422,7 +422,7 @@
           <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
           <Property Name="ИНН" Type="Int64" Nullable="false" />
           <Property Name="СНИЛС" Type="Int64" Nullable="false" />
-          <Property Name="Номер_медицинского_полюса" Type="Int64" Nullable="false" />
+          <Property Name="Номер_медицинского_полиса" Type="Int64" Nullable="false" />
           <Property Name="Фотография" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Номер_трудового_договора" Type="Int64" />
           <Property Name="Срок_действия_договора" Type="Int32" />
@@ -434,18 +434,18 @@
           </Key>
           <Property Name="Код_должности" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Наименование" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Зарплата" Relationship="HiringStaffModel.FK_Зарплата_Должность" FromRole="Должность" ToRole="Зарплата" />
+          <NavigationProperty Name="Зарплаты_сотрудников" Relationship="HiringStaffModel.FK_Зарплаты_сотрудников_Должность" FromRole="Должность" ToRole="Зарплаты_сотрудников" />
           <NavigationProperty Name="Сотрудник" Relationship="HiringStaffModel.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
         </EntityType>
-        <EntityType Name="Зарплата">
+        <EntityType Name="Зарплаты_сотрудников">
           <Key>
             <PropertyRef Name="Код_зарплаты" />
           </Key>
           <Property Name="Код_зарплаты" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Код_должности" Type="Int32" Nullable="false" />
           <Property Name="Стаж" Type="Int32" Nullable="false" />
-          <Property Name="Зарплата1" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Должность" Relationship="HiringStaffModel.FK_Зарплата_Должность" FromRole="Зарплата" ToRole="Должность" />
+          <Property Name="Зарплата" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Должность" Relationship="HiringStaffModel.FK_Зарплаты_сотрудников_Должность" FromRole="Зарплаты_сотрудников" ToRole="Должность" />
         </EntityType>
         <EntityType Name="Классы">
           <Key>
@@ -458,7 +458,7 @@
           <Property Name="Количество_учеников" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Помещение" Relationship="HiringStaffModel.FK_Классы_Помещение" FromRole="Классы" ToRole="Помещение" />
           <NavigationProperty Name="Сотрудник" Relationship="HiringStaffModel.FK_Классы_Сотрудник" FromRole="Классы" ToRole="Сотрудник" />
-          <NavigationProperty Name="Преподоваемые_часы" Relationship="HiringStaffModel.FK_Преподоваемые_часы_Классы" FromRole="Классы" ToRole="Преподоваемые_часы" />
+          <NavigationProperty Name="Преподаваемые_часы" Relationship="HiringStaffModel.FK_Преподаваемые_часы_Классы" FromRole="Классы" ToRole="Преподаваемые_часы" />
         </EntityType>
         <EntityType Name="Помещение">
           <Key>
@@ -466,7 +466,7 @@
           </Key>
           <Property Name="Код_помещения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Наименование" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Код_отвественного_сотрудника" Type="Int32" />
+          <Property Name="Код_ответственного_сотрудника" Type="Int32" />
           <Property Name="Площадь" Type="Double" Nullable="false" />
           <NavigationProperty Name="Классы" Relationship="HiringStaffModel.FK_Классы_Помещение" FromRole="Помещение" ToRole="Классы" />
           <NavigationProperty Name="Сотрудник" Relationship="HiringStaffModel.FK_Помещение_Сотрудник" FromRole="Помещение" ToRole="Сотрудник" />
@@ -478,7 +478,7 @@
           <Property Name="Код_предмета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Наименование" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Преподаваемые_предметы" Relationship="HiringStaffModel.FK_Преподаваемые_предметы_Предмет" FromRole="Предмет" ToRole="Преподаваемые_предметы" />
-          <NavigationProperty Name="Преподоваемые_часы" Relationship="HiringStaffModel.FK_Преподоваемые_часы_Предмет" FromRole="Предмет" ToRole="Преподоваемые_часы" />
+          <NavigationProperty Name="Преподаваемые_часы" Relationship="HiringStaffModel.FK_Преподаваемые_часы_Предмет" FromRole="Предмет" ToRole="Преподаваемые_часы" />
         </EntityType>
         <EntityType Name="Преподаваемые_предметы">
           <Key>
@@ -490,7 +490,7 @@
           <NavigationProperty Name="Предмет" Relationship="HiringStaffModel.FK_Преподаваемые_предметы_Предмет" FromRole="Преподаваемые_предметы" ToRole="Предмет" />
           <NavigationProperty Name="Сотрудник" Relationship="HiringStaffModel.FK_Преподаваемые_предметы_Сотрудник" FromRole="Преподаваемые_предметы" ToRole="Сотрудник" />
         </EntityType>
-        <EntityType Name="Преподоваемые_часы">
+        <EntityType Name="Преподаваемые_часы">
           <Key>
             <PropertyRef Name="Код_преподаваемых_часов" />
           </Key>
@@ -499,8 +499,8 @@
           <Property Name="Код_класса" Type="Int32" Nullable="false" />
           <Property Name="Дата_распределения_часов" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Количество_часов" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Классы" Relationship="HiringStaffModel.FK_Преподоваемые_часы_Классы" FromRole="Преподоваемые_часы" ToRole="Классы" />
-          <NavigationProperty Name="Предмет" Relationship="HiringStaffModel.FK_Преподоваемые_часы_Предмет" FromRole="Преподоваемые_часы" ToRole="Предмет" />
+          <NavigationProperty Name="Классы" Relationship="HiringStaffModel.FK_Преподаваемые_часы_Классы" FromRole="Преподаваемые_часы" ToRole="Классы" />
+          <NavigationProperty Name="Предмет" Relationship="HiringStaffModel.FK_Преподаваемые_часы_Предмет" FromRole="Преподаваемые_часы" ToRole="Предмет" />
         </EntityType>
         <EntityType Name="Сотрудник">
           <Key>
@@ -567,14 +567,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Зарплата_Должность">
+        <Association Name="FK_Зарплаты_сотрудников_Должность">
           <End Type="HiringStaffModel.Должность" Role="Должность" Multiplicity="1" />
-          <End Type="HiringStaffModel.Зарплата" Role="Зарплата" Multiplicity="*" />
+          <End Type="HiringStaffModel.Зарплаты_сотрудников" Role="Зарплаты_сотрудников" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Должность">
               <PropertyRef Name="Код_должности" />
             </Principal>
-            <Dependent Role="Зарплата">
+            <Dependent Role="Зарплаты_сотрудников">
               <PropertyRef Name="Код_должности" />
             </Dependent>
           </ReferentialConstraint>
@@ -617,14 +617,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Преподоваемые_часы_Классы">
+        <Association Name="FK_Преподаваемые_часы_Классы">
           <End Type="HiringStaffModel.Классы" Role="Классы" Multiplicity="1" />
-          <End Type="HiringStaffModel.Преподоваемые_часы" Role="Преподоваемые_часы" Multiplicity="*" />
+          <End Type="HiringStaffModel.Преподаваемые_часы" Role="Преподаваемые_часы" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Классы">
               <PropertyRef Name="Код_класса" />
             </Principal>
-            <Dependent Role="Преподоваемые_часы">
+            <Dependent Role="Преподаваемые_часы">
               <PropertyRef Name="Код_класса" />
             </Dependent>
           </ReferentialConstraint>
@@ -637,7 +637,7 @@
               <PropertyRef Name="Код_сотрудника" />
             </Principal>
             <Dependent Role="Помещение">
-              <PropertyRef Name="Код_отвественного_сотрудника" />
+              <PropertyRef Name="Код_ответственного_сотрудника" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -653,14 +653,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Преподоваемые_часы_Предмет">
+        <Association Name="FK_Преподаваемые_часы_Предмет">
           <End Type="HiringStaffModel.Предмет" Role="Предмет" Multiplicity="1" />
-          <End Type="HiringStaffModel.Преподоваемые_часы" Role="Преподоваемые_часы" Multiplicity="*" />
+          <End Type="HiringStaffModel.Преподаваемые_часы" Role="Преподаваемые_часы" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Предмет">
               <PropertyRef Name="Код_предмета" />
             </Principal>
-            <Dependent Role="Преподоваемые_часы">
+            <Dependent Role="Преподаваемые_часы">
               <PropertyRef Name="Код_предмета" />
             </Dependent>
           </ReferentialConstraint>
@@ -709,7 +709,7 @@
                 <ScalarProperty Name="Срок_действия_договора" ColumnName="Срок действия договора" />
                 <ScalarProperty Name="Номер_трудового_договора" ColumnName="Номер трудового договора" />
                 <ScalarProperty Name="Фотография" ColumnName="Фотография" />
-                <ScalarProperty Name="Номер_медицинского_полюса" ColumnName="Номер медицинского полюса" />
+                <ScalarProperty Name="Номер_медицинского_полиса" ColumnName="Номер медицинского полиса" />
                 <ScalarProperty Name="СНИЛС" ColumnName="СНИЛС" />
                 <ScalarProperty Name="ИНН" ColumnName="ИНН" />
                 <ScalarProperty Name="Номер_паспорта" ColumnName="Номер паспорта" />
@@ -727,10 +727,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Зарплата">
-            <EntityTypeMapping TypeName="HiringStaffModel.Зарплата">
-              <MappingFragment StoreEntitySet="Зарплата">
-                <ScalarProperty Name="Зарплата1" ColumnName="Зарплата" />
+          <EntitySetMapping Name="Зарплаты_сотрудников">
+            <EntityTypeMapping TypeName="HiringStaffModel.Зарплаты_сотрудников">
+              <MappingFragment StoreEntitySet="Зарплаты сотрудников">
+                <ScalarProperty Name="Зарплата" ColumnName="Зарплата" />
                 <ScalarProperty Name="Стаж" ColumnName="Стаж" />
                 <ScalarProperty Name="Код_должности" ColumnName="Код должности" />
                 <ScalarProperty Name="Код_зарплаты" ColumnName="Код зарплаты" />
@@ -752,7 +752,7 @@
             <EntityTypeMapping TypeName="HiringStaffModel.Помещение">
               <MappingFragment StoreEntitySet="Помещение">
                 <ScalarProperty Name="Площадь" ColumnName="Площадь" />
-                <ScalarProperty Name="Код_отвественного_сотрудника" ColumnName="Код отвественного сотрудника" />
+                <ScalarProperty Name="Код_ответственного_сотрудника" ColumnName="Код ответственного сотрудника" />
                 <ScalarProperty Name="Наименование" ColumnName="Наименование" />
                 <ScalarProperty Name="Код_помещения" ColumnName="Код помещения" />
               </MappingFragment>
@@ -775,9 +775,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Преподоваемые_часы">
-            <EntityTypeMapping TypeName="HiringStaffModel.Преподоваемые_часы">
-              <MappingFragment StoreEntitySet="Преподоваемые часы">
+          <EntitySetMapping Name="Преподаваемые_часы">
+            <EntityTypeMapping TypeName="HiringStaffModel.Преподаваемые_часы">
+              <MappingFragment StoreEntitySet="Преподаваемые часы">
                 <ScalarProperty Name="Количество_часов" ColumnName="Количество часов" />
                 <ScalarProperty Name="Дата_распределения_часов" ColumnName="Дата распределения часов" />
                 <ScalarProperty Name="Код_класса" ColumnName="Код класса" />

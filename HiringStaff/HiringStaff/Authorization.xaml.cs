@@ -24,11 +24,16 @@ namespace HiringStaff
             InitializeComponent();
         }
 
+        // Хранение значения показа пароля
+        public bool showPassword = false;
+
         // Хранение переносимых переменных
         public static class TempData
         { 
             public static int userId { get; set; }
             public static int selectedEmployee { get; set; }
+            public static int selectedWorkingHours { get; set; }
+            public static int selectedReport { get; set; }
         }
 
         // Авторизация
@@ -64,6 +69,14 @@ namespace HiringStaff
                                 director.Show();
                                 this.Hide();
                                 break;
+                            case "Администратор":
+                                Administrator administrator = new Administrator();
+                                administrator.Show();
+                                this.Hide();
+                                break;
+                            default:
+                                MessageBox.Show("Ваша должность не соответствует требованиям","Внимание",MessageBoxButton.OK, MessageBoxImage.Warning);
+                                break;
                         }
                     }
                     else
@@ -80,9 +93,47 @@ namespace HiringStaff
             }
         }
 
+        // Закрытие приложение
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        // Синхранизация пароля
+        private void Password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (HidePassword.Password.Length != Password.Text.Length)
+            {
+                HidePassword.Password = Password.Text;
+                Password.Focus();
+            }
+        }
+
+        // Синхранизация пароля
+        private void HidePassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (HidePassword.Password.Length != Password.Text.Length)
+            {
+                Password.Text = HidePassword.Password;
+                HidePassword.Focus();
+            }
+        }
+
+        // Показ или скрытие пароля
+        private void ShowPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (showPassword == true)
+            {
+                showPassword = false;
+                HidePassword.Visibility = Visibility.Visible;
+                Password.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                showPassword = true;
+                HidePassword.Visibility = Visibility.Collapsed;
+                Password.Visibility = Visibility.Visible;
+            }
         }
     }
 }
