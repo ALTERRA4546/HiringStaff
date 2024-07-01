@@ -22,7 +22,7 @@ namespace HiringStaff
     
         public int Код_помещения { get; set; }
         public string Наименование { get; set; }
-        public Nullable<int> Код_отвественного_сотрудника { get; set; }
+        public Nullable<int> Код_ответственного_сотрудника { get; set; }
         public double Площадь { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -17,7 +17,7 @@ namespace HiringStaff
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Классы()
         {
-            this.Преподоваемые_часы = new HashSet<Преподоваемые_часы>();
+            this.Преподаваемые_часы = new HashSet<Преподаваемые_часы>();
         }
     
         public int Код_класса { get; set; }
@@ -29,6 +29,6 @@ namespace HiringStaff
         public virtual Помещение Помещение { get; set; }
         public virtual Сотрудник Сотрудник { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Преподоваемые_часы> Преподоваемые_часы { get; set; }
+        public virtual ICollection<Преподаваемые_часы> Преподаваемые_часы { get; set; }
     }
 }

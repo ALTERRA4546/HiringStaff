@@ -159,7 +159,7 @@
     <Compile Include="Преподаваемые_предметы.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Преподоваемые_часы.cs">
+    <Compile Include="Преподаваемые_часы.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Сотрудник.cs">

@@ -65,7 +65,7 @@
     </Key>
     <Property Name="Код помещения" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Наименование" Type="nvarchar" MaxLength="250" Nullable="false" />
-    <Property Name="Код отвественного сотрудника" Type="int" />
+    <Property Name="Код ответственного сотрудника" Type="int" />
     <Property Name="Площадь" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Предмет">
@@ -83,7 +83,7 @@
     <Property Name="Код учителя" Type="int" Nullable="false" />
     <Property Name="Код предмета" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Преподоваемые часы">
+  <EntityType Name="Преподаваемые часы">
     <Key>
       <PropertyRef Name="Код преподаваемых часов" />
     </Key>
@@ -197,7 +197,7 @@
         <PropertyRef Name="Код сотрудника" />
       </Principal>
       <Dependent Role="Помещение">
-        <PropertyRef Name="Код отвественного сотрудника" />
+        <PropertyRef Name="Код ответственного сотрудника" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -225,26 +225,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Преподоваемые часы_Классы">
+  <Association Name="FK_Преподаваемые часы_Классы">
     <End Role="Классы" Type="Self.Классы" Multiplicity="1" />
-    <End Role="Преподоваемые часы" Type="Self.Преподоваемые часы" Multiplicity="*" />
+    <End Role="Преподаваемые часы" Type="Self.Преподаваемые часы" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Классы">
         <PropertyRef Name="Код класса" />
       </Principal>
-      <Dependent Role="Преподоваемые часы">
+      <Dependent Role="Преподаваемые часы">
         <PropertyRef Name="Код класса" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Преподоваемые часы_Предмет">
+  <Association Name="FK_Преподаваемые часы_Предмет">
     <End Role="Предмет" Type="Self.Предмет" Multiplicity="1" />
-    <End Role="Преподоваемые часы" Type="Self.Преподоваемые часы" Multiplicity="*" />
+    <End Role="Преподаваемые часы" Type="Self.Преподаваемые часы" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Предмет">
         <PropertyRef Name="Код предмета" />
       </Principal>
-      <Dependent Role="Преподоваемые часы">
+      <Dependent Role="Преподаваемые часы">
         <PropertyRef Name="Код предмета" />
       </Dependent>
     </ReferentialConstraint>
@@ -271,7 +271,7 @@
     <EntitySet Name="Помещение" EntityType="Self.Помещение" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Предмет" EntityType="Self.Предмет" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Преподаваемые предметы" EntityType="Self.Преподаваемые предметы" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Преподоваемые часы" EntityType="Self.Преподоваемые часы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Преподаваемые часы" EntityType="Self.Преподаваемые часы" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Авторизация_Сотрудник" Association="Self.FK_Авторизация_Сотрудник">
       <End Role="Сотрудник" EntitySet="Сотрудник" />
@@ -309,13 +309,13 @@
       <End Role="Сотрудник" EntitySet="Сотрудник" />
       <End Role="Преподаваемые предметы" EntitySet="Преподаваемые предметы" />
     </AssociationSet>
-    <AssociationSet Name="FK_Преподоваемые часы_Классы" Association="Self.FK_Преподоваемые часы_Классы">
+    <AssociationSet Name="FK_Преподаваемые часы_Классы" Association="Self.FK_Преподаваемые часы_Классы">
       <End Role="Классы" EntitySet="Классы" />
-      <End Role="Преподоваемые часы" EntitySet="Преподоваемые часы" />
+      <End Role="Преподаваемые часы" EntitySet="Преподаваемые часы" />
     </AssociationSet>
-    <AssociationSet Name="FK_Преподоваемые часы_Предмет" Association="Self.FK_Преподоваемые часы_Предмет">
+    <AssociationSet Name="FK_Преподаваемые часы_Предмет" Association="Self.FK_Преподаваемые часы_Предмет">
       <End Role="Предмет" EntitySet="Предмет" />
-      <End Role="Преподоваемые часы" EntitySet="Преподоваемые часы" />
+      <End Role="Преподаваемые часы" EntitySet="Преподаваемые часы" />
     </AssociationSet>
     <AssociationSet Name="FK_Сотрудник_Должность" Association="Self.FK_Сотрудник_Должность">
       <End Role="Должность" EntitySet="Должность" />

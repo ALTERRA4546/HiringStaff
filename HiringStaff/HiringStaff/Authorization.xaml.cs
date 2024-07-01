@@ -74,6 +74,9 @@ namespace HiringStaff
                                 administrator.Show();
                                 this.Hide();
                                 break;
+                            default:
+                                MessageBox.Show("Ваша должность не соответствует требованиям","Внимание",MessageBoxButton.OK, MessageBoxImage.Warning);
+                                break;
                         }
                     }
                     else

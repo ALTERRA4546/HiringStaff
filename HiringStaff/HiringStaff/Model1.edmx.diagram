@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b0713c4a1b74424b9a0150c0aac2f45f" Name="Diagram1">
-        <EntityTypeShape EntityType="HiringStaffModel.Авторизация" Width="1.5" PointX="5.25" PointY="20.25" />
+        <EntityTypeShape EntityType="HiringStaffModel.Авторизация" Width="1.5" PointX="5.25" PointY="10.375" />
         <EntityTypeShape EntityType="HiringStaffModel.График_работы" Width="1.5" PointX="5.25" PointY="7.625" />
-        <EntityTypeShape EntityType="HiringStaffModel.Документы" Width="1.5" PointX="5.25" PointY="13" />
+        <EntityTypeShape EntityType="HiringStaffModel.Документы" Width="1.5" PointX="5.25" PointY="19.125" />
         <EntityTypeShape EntityType="HiringStaffModel.Должность" Width="1.5" PointX="0.75" PointY="11.125" />
         <EntityTypeShape EntityType="HiringStaffModel.Зарплаты_сотрудников" Width="1.5" PointX="3" PointY="4.875" />
         <EntityTypeShape EntityType="HiringStaffModel.Классы" Width="1.5" PointX="7.5" PointY="16.875" />
         <EntityTypeShape EntityType="HiringStaffModel.Помещение" Width="1.5" PointX="5.25" PointY="23" />
-        <EntityTypeShape EntityType="HiringStaffModel.Предмет" Width="1.5" PointX="6" PointY="10.5" />
-        <EntityTypeShape EntityType="HiringStaffModel.Преподаваемые_предметы" Width="1.5" PointX="8.25" PointY="12.375" />
-        <EntityTypeShape EntityType="HiringStaffModel.Преподоваемые_часы" Width="1.5" PointX="9.75" PointY="17" />
+        <EntityTypeShape EntityType="HiringStaffModel.Предмет" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="HiringStaffModel.Преподаваемые_предметы" Width="1.5" PointX="5.25" PointY="13.375" />
+        <EntityTypeShape EntityType="HiringStaffModel.Преподаваемые_часы" Width="1.5" PointX="9.75" PointY="17" />
         <EntityTypeShape EntityType="HiringStaffModel.Сотрудник" Width="1.5" PointX="3" PointY="11.125" />
         <AssociationConnector Association="HiringStaffModel.FK_Авторизация_Сотрудник" />
         <AssociationConnector Association="HiringStaffModel.FK_График_работы_Сотрудник" />
@@ -23,10 +23,10 @@
         <AssociationConnector Association="HiringStaffModel.FK_Сотрудник_Должность" />
         <AssociationConnector Association="HiringStaffModel.FK_Классы_Помещение" />
         <AssociationConnector Association="HiringStaffModel.FK_Классы_Сотрудник" />
-        <AssociationConnector Association="HiringStaffModel.FK_Преподоваемые_часы_Классы" />
+        <AssociationConnector Association="HiringStaffModel.FK_Преподаваемые_часы_Классы" />
         <AssociationConnector Association="HiringStaffModel.FK_Помещение_Сотрудник" />
         <AssociationConnector Association="HiringStaffModel.FK_Преподаваемые_предметы_Предмет" />
-        <AssociationConnector Association="HiringStaffModel.FK_Преподоваемые_часы_Предмет" />
+        <AssociationConnector Association="HiringStaffModel.FK_Преподаваемые_часы_Предмет" />
         <AssociationConnector Association="HiringStaffModel.FK_Преподаваемые_предметы_Сотрудник" />
       </Diagram>
     </edmx:Diagrams>

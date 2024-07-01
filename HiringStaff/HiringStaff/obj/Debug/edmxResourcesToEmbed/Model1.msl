@@ -70,7 +70,7 @@
       <EntityTypeMapping TypeName="HiringStaffModel.Помещение">
         <MappingFragment StoreEntitySet="Помещение">
           <ScalarProperty Name="Площадь" ColumnName="Площадь" />
-          <ScalarProperty Name="Код_отвественного_сотрудника" ColumnName="Код отвественного сотрудника" />
+          <ScalarProperty Name="Код_ответственного_сотрудника" ColumnName="Код ответственного сотрудника" />
           <ScalarProperty Name="Наименование" ColumnName="Наименование" />
           <ScalarProperty Name="Код_помещения" ColumnName="Код помещения" />
         </MappingFragment>
@@ -93,9 +93,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Преподоваемые_часы">
-      <EntityTypeMapping TypeName="HiringStaffModel.Преподоваемые_часы">
-        <MappingFragment StoreEntitySet="Преподоваемые часы">
+    <EntitySetMapping Name="Преподаваемые_часы">
+      <EntityTypeMapping TypeName="HiringStaffModel.Преподаваемые_часы">
+        <MappingFragment StoreEntitySet="Преподаваемые часы">
           <ScalarProperty Name="Количество_часов" ColumnName="Количество часов" />
           <ScalarProperty Name="Дата_распределения_часов" ColumnName="Дата распределения часов" />
           <ScalarProperty Name="Код_класса" ColumnName="Код класса" />

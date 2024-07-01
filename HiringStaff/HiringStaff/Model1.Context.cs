@@ -34,7 +34,7 @@ namespace HiringStaff
         public virtual DbSet<Помещение> Помещение { get; set; }
         public virtual DbSet<Предмет> Предмет { get; set; }
         public virtual DbSet<Преподаваемые_предметы> Преподаваемые_предметы { get; set; }
-        public virtual DbSet<Преподоваемые_часы> Преподоваемые_часы { get; set; }
+        public virtual DbSet<Преподаваемые_часы> Преподаваемые_часы { get; set; }
         public virtual DbSet<Сотрудник> Сотрудник { get; set; }
     }
 }
