@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HiringStaff"
         mc:Ignorable="d"
-        Title="HiringStaff" Height="210" Width="400" Closing="Window_Closing">
+        Title="HiringStaff" Height="210" Width="400" Closing="Window_Closing" ResizeMode="NoResize">
     <Grid> 
         <Grid>
             <Rectangle VerticalAlignment="Top" Width="400" Height="40" Fill="#09202a"/>
