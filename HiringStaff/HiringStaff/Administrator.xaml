@@ -30,11 +30,11 @@
                     </MenuItem>
                     <MenuItem Header="Данные" Foreground="White">
                         <MenuItem Header="Резервное копирование" Foreground="Black">
-                            <MenuItem x:Name="FullBackUp" Header="Полное копирование" Foreground="Black" Click="FullBackUp_Click"/>
-                            <MenuItem x:Name="DifferentialBackUp" Header="Разностное копирование" Foreground="Black" Click="DifferentialBackUp_Click"/>
+                            <MenuItem x:Name="FullBackUp" Header="Полное резервное копирование" Foreground="Black" Click="FullBackUp_Click"/>
+                            <MenuItem x:Name="DifferentialBackUp" Header="Разностное резервное копирование" Foreground="Black" Click="DifferentialBackUp_Click"/>
                             <MenuItem x:Name="TransactionLogBackUp" Header="Резервное копирование журнала транзакции" Foreground="Black" Click="TransactionLogBackUp_Click"/>
                         </MenuItem>
-                        <MenuItem x:Name="Restore" Header="Восстановить" Foreground="Black" Click="Restore_Click"/>
+                        <MenuItem x:Name="Restore" Header="Восстановление" Foreground="Black" Click="Restore_Click"/>
                     </MenuItem>
                 </Menu>
             </WrapPanel>

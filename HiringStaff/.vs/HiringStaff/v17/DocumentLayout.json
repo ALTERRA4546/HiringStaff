@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|c:\\users\\king night\\source\\repos\\hiringstaff\\hiringstaff\\administrator.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\administrator.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|c:\\users\\king night\\source\\repos\\hiringstaff\\hiringstaff\\director.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\director.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
@@ -27,6 +31,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Administrator.xaml",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Administrator.xaml",
+              "RelativeDocumentMoniker": "HiringStaff\\Administrator.xaml",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Administrator.xaml",
+              "RelativeToolTip": "HiringStaff\\Administrator.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-02T22:22:36.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Director.xaml",
               "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Director.xaml",
               "RelativeDocumentMoniker": "HiringStaff\\Director.xaml",
