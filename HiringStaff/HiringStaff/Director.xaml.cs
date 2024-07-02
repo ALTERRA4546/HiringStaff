@@ -103,17 +103,33 @@ namespace HiringStaff
         // Закрытие окна
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!exitMode)
-                Application.Current.Shutdown();
+            try
+            {
+                if (!exitMode)
+                    Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Переход в окно добавления сотрудника
         private void AddEmployees_Click(object sender, RoutedEventArgs e)
         {
-            AddOrChangeEmployee addOrChangeEmployee = new AddOrChangeEmployee();
-            TempData.selectedEmployee = -1;
-            addOrChangeEmployee.ShowDialog();
-            Filter();
+            try
+            {
+                AddOrChangeEmployee addOrChangeEmployee = new AddOrChangeEmployee();
+                TempData.selectedEmployee = -1;
+                addOrChangeEmployee.ShowDialog();
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Удаление сотрудника
@@ -197,30 +213,54 @@ namespace HiringStaff
         // Фильтрация
         private void Filter()
         {
-            string search = "";
-            string post = "";
+            try
+            {
+                string search = "";
+                string post = "";
 
-            if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
-                post = ChoiceOfPosition.SelectedItem.ToString();
-            else
-                post = null;
+                if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
+                    post = ChoiceOfPosition.SelectedItem.ToString();
+                else
+                    post = null;
 
-            if (Search.Text != "")
-                search = Search.Text;
+                if (Search.Text != "")
+                    search = Search.Text;
 
-            Initialization(post, search);
+                Initialization(post, search);
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Поиск сотрудников
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Фильтарция по должности
         private void ChoiceOfPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Экспорт данных
@@ -464,66 +504,114 @@ namespace HiringStaff
         // Режим экспорта
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
+            try
             {
-                if (MessageBox.Show("Экспортировать данные с использованием выставленных фильтров?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
                 {
-                    string post = "";
+                    if (MessageBox.Show("Экспортировать данные с использованием выставленных фильтров?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        string post = "";
 
-                    if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
-                        post = ChoiceOfPosition.SelectedItem.ToString();
+                        if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
+                            post = ChoiceOfPosition.SelectedItem.ToString();
+                        else
+                            post = null;
+
+                        ExportData(post);
+                    }
                     else
-                        post = null;
-
-                    ExportData(post);
+                    {
+                        ExportData(null);
+                    }
                 }
                 else
                 {
                     ExportData(null);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                ExportData(null);
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Выход на окно авторизации
         private void ChangeUser_Click(object sender, RoutedEventArgs e)
         {
-            exitMode = true;
-            Authorization authorization = new Authorization();
-            authorization.Show();
-            this.Close();
+            try
+            {
+                exitMode = true;
+                Authorization authorization = new Authorization();
+                authorization.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Закрытие приложения
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Открытие окна графика расписания
         private void WorkSchedule_Click(object sender, RoutedEventArgs e)
         {
-            DrawingUpWorkSchedule drawingUpWorkSchedule = new DrawingUpWorkSchedule();
-            drawingUpWorkSchedule.ShowDialog();
+            try
+            {
+                DrawingUpWorkSchedule drawingUpWorkSchedule = new DrawingUpWorkSchedule();
+                drawingUpWorkSchedule.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Отчет о зарплате сотрудников
         private void SalaryReport_Click(object sender, RoutedEventArgs e)
         {
-            TempData.selectedReport = 0;
-            MultiReport multiReport = new MultiReport();
-            multiReport.ShowDialog();
+            try
+            {
+                TempData.selectedReport = 0;
+                MultiReport multiReport = new MultiReport();
+                multiReport.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Отчет о отработанных часах
         private void ReportOnHoursWorked_Click(object sender, RoutedEventArgs e)
         {
-            TempData.selectedReport = 1;
-            MultiReport multiReport = new MultiReport();
-            multiReport.ShowDialog();
+            try
+            {
+                TempData.selectedReport = 1;
+                MultiReport multiReport = new MultiReport();
+                multiReport.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

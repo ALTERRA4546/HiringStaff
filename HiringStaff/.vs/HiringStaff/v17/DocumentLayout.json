@@ -5,18 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|c:\\users\\king night\\source\\repos\\hiringstaff\\hiringstaff\\drawingupworkschedule.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\drawingupworkschedule.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|C:\\Users\\King Night\\source\\repos\\HiringStaff\\hiringstaff\\drawingupworkschedule.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\drawingupworkschedule.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|C:\\Users\\King Night\\source\\repos\\HiringStaff\\hiringstaff\\administrator.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\administrator.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|C:\\Users\\King Night\\source\\repos\\HiringStaff\\hiringstaff\\addorchangeemployee.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\addorchangeemployee.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,45 +32,10 @@
               "RelativeDocumentMoniker": "HiringStaff\\DrawingUpWorkSchedule.xaml.cs",
               "ToolTip": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\DrawingUpWorkSchedule.xaml.cs",
               "RelativeToolTip": "HiringStaff\\DrawingUpWorkSchedule.xaml.cs",
-              "ViewState": "AQIAAHcBAAAAAAAAAAAAAI0BAAAnAAAA",
+              "ViewState": "AQIAALgBAAAAAAAAAAAIwNABAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T21:04:42.078Z",
+              "WhenOpened": "2024-07-02T19:38:13.637Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DrawingUpWorkSchedule.xaml",
-              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\DrawingUpWorkSchedule.xaml",
-              "RelativeDocumentMoniker": "HiringStaff\\DrawingUpWorkSchedule.xaml",
-              "ToolTip": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\DrawingUpWorkSchedule.xaml",
-              "RelativeToolTip": "HiringStaff\\DrawingUpWorkSchedule.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-01T21:04:40.02Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AddOrChangeEmployee.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\AddOrChangeEmployee.xaml.cs",
-              "RelativeDocumentMoniker": "HiringStaff\\AddOrChangeEmployee.xaml.cs",
-              "ToolTip": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\AddOrChangeEmployee.xaml.cs",
-              "RelativeToolTip": "HiringStaff\\AddOrChangeEmployee.xaml.cs",
-              "ViewState": "AQIAAJQBAAAAAAAAAAAAALYBAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T20:55:47.241Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Administrator.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Administrator.xaml.cs",
-              "RelativeDocumentMoniker": "HiringStaff\\Administrator.xaml.cs",
-              "ToolTip": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Administrator.xaml.cs",
-              "RelativeToolTip": "HiringStaff\\Administrator.xaml.cs",
-              "ViewState": "AQIAAK4BAAAAAAAAAAAQwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T20:55:18.619Z"
             }
           ]
         },

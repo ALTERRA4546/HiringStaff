@@ -121,30 +121,54 @@ namespace HiringStaff
         // Фильтрация
         private void Filter()
         {
-            string search = "";
-            string post = "";
+            try
+            {
+                string search = "";
+                string post = "";
 
-            if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
-                post = ChoiceOfPosition.SelectedItem.ToString();
-            else
-                post = null;
+                if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
+                    post = ChoiceOfPosition.SelectedItem.ToString();
+                else
+                    post = null;
 
-            if (Search.Text != "")
-                search = Search.Text;
+                if (Search.Text != "")
+                    search = Search.Text;
 
-            Initialization(post, search);
+                Initialization(post, search);
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Поиск сотрудников
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Фильтарция по должности
         private void ChoiceOfPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Сохранение данных

@@ -75,8 +75,16 @@ namespace HiringStaff
         // Закрытие приложения
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (exitMode != true)
-                Application.Current.Shutdown();
+            try
+            {
+                if (exitMode != true)
+                    Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Загрузка данных в DataGrid
@@ -208,225 +216,329 @@ namespace HiringStaff
         // Загрзка таблицы сотрудник
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true) 
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 0;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 0;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 0;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы документы
         private void Documents_Click(object sender, RoutedEventArgs e)
         {
-            // Предупреждение о смене таблицы без сохранения изменений
-            if (changingTable == true)
+            try
             {
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                // Предупреждение о смене таблицы без сохранения изменений
+                if (changingTable == true)
+                {
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 1;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 1;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 1;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы авторизация
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
-            // Предупреждение о смене таблицы без сохранения изменений
-            if (changingTable == true)
+            try
             {
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                // Предупреждение о смене таблицы без сохранения изменений
+                if (changingTable == true)
+                {
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 2;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 2;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 2;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы график работы
         private void WorkSchedule_Click(object sender, RoutedEventArgs e)
         {
-            // Предупреждение о смене таблицы без сохранения изменений
-            if (changingTable == true)
+            try
             {
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                // Предупреждение о смене таблицы без сохранения изменений
+                if (changingTable == true)
+                {
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 3;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 3;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 3;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы зарплаты сотрудников
         private void EmployeeSalaries_Click(object sender, RoutedEventArgs e)
         {
-            // Предупреждение о смене таблицы без сохранения изменений
-            if (changingTable == true)
+            try
             {
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                // Предупреждение о смене таблицы без сохранения изменений
+                if (changingTable == true)
+                {
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 4;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 4;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 4;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы должность
         private void Post_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true)
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 5;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 5;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 5;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы помещения
         private void Room_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true)
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 6;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 6;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 6;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы классы
         private void Class_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true)
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 7;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 7;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 7;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы предмет
         private void Item_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true)
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 8;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 8;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 8;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы преподоваемые часы
         private void HoursTaught_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true)
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 9;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 9;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 9;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Загрузка таблицы преподаваемые предметы
         private void SubjectsTaught_Click(object sender, RoutedEventArgs e)
         {
-            if (changingTable == true)
+            try
             {
-                // Предупреждение о смене таблицы без сохранения изменений
-                if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (changingTable == true)
+                {
+                    // Предупреждение о смене таблицы без сохранения изменений
+                    if (MessageBox.Show("Данные в таблицы были изменены, вы хотите перейти в эту таблицу?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        selectionTable = 10;
+                        Initialization();
+                    }
+                }
+                else
                 {
                     selectionTable = 10;
                     Initialization();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                selectionTable = 10;
-                Initialization();
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Смена пользователя
         private void ChangeUser_Click(object sender, RoutedEventArgs e)
         {
-            exitMode = true;
-            Authorization authorization = new Authorization();
-            authorization.Show();
-            this.Hide();
+            try
+            {
+                exitMode = true;
+                Authorization authorization = new Authorization();
+                authorization.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Выход из приложения
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Сохранение изменений
@@ -756,7 +868,15 @@ namespace HiringStaff
         // Обнавление данных
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            Initialization();
+            try
+            {
+                Initialization();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Удаление записи из базы данных

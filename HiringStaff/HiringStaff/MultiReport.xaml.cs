@@ -33,15 +33,23 @@ namespace HiringStaff
         // Загрузка данных в ComboBox
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            YearPanel.Visibility = Visibility.Collapsed;
+            try
+            {
+                YearPanel.Visibility = Visibility.Collapsed;
 
-            List <string> selectYear = new List<string>();
-            for (int year = DateTime.Now.Year + 1; year > 1900; year--)
-                selectYear.Add(year.ToString());
+                List<string> selectYear = new List<string>();
+                for (int year = DateTime.Now.Year + 1; year > 1900; year--)
+                    selectYear.Add(year.ToString());
 
-            SelectedYear.ItemsSource = selectYear;
-            SelectedYear.SelectedIndex = 0;
-            Initialization();
+                SelectedYear.ItemsSource = selectYear;
+                SelectedYear.SelectedIndex = 0;
+                Initialization();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Загрузка данных из запросов в DataGrid
@@ -105,30 +113,38 @@ namespace HiringStaff
         // Экспрот
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            switch (TempData.selectedReport)
+            try
             {
-                case 0:
-                    ExportingSalaryReport();
-                    break;
+                switch (TempData.selectedReport)
+                {
+                    case 0:
+                        ExportingSalaryReport();
+                        break;
 
-                case 1:
-                    if (ChekedSelectedYear.IsChecked == true)
-                    {
-                        if (MessageBox.Show("Экспортировать отчет с учетом включеного фильтра?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    case 1:
+                        if (ChekedSelectedYear.IsChecked == true)
                         {
-                            ExportingHoursWorkedReport();
+                            if (MessageBox.Show("Экспортировать отчет с учетом включеного фильтра?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            {
+                                ExportingHoursWorkedReport();
+                            }
+                            else
+                            {
+                                ChekedSelectedYear.IsChecked = false;
+                                ExportingHoursWorkedReport();
+                            }
                         }
                         else
                         {
-                            ChekedSelectedYear.IsChecked = false;
                             ExportingHoursWorkedReport();
                         }
-                    }
-                    else
-                    {
-                        ExportingHoursWorkedReport();
-                    }
-                    break;
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -425,13 +441,29 @@ namespace HiringStaff
         // Включение фильтрации по году
         private void ChekedSelectedYear_Click(object sender, RoutedEventArgs e)
         {
-            Initialization();
+            try
+            {
+                Initialization();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Изменение года
         private void SelectedYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Initialization();
+            try
+            {
+                Initialization();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

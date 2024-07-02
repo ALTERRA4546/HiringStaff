@@ -96,43 +96,75 @@ namespace HiringStaff
         // Закрытие приложение
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Application.Current.Shutdown();
+            try
+            {
+                Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Синхранизация пароля
         private void Password_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (HidePassword.Password.Length != Password.Text.Length)
+            try
             {
-                HidePassword.Password = Password.Text;
-                Password.Focus();
+                if (HidePassword.Password.Length != Password.Text.Length)
+                {
+                    HidePassword.Password = Password.Text;
+                    Password.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Синхранизация пароля
         private void HidePassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (HidePassword.Password.Length != Password.Text.Length)
+            try
             {
-                Password.Text = HidePassword.Password;
-                HidePassword.Focus();
+                if (HidePassword.Password.Length != Password.Text.Length)
+                {
+                    Password.Text = HidePassword.Password;
+                    HidePassword.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         // Показ или скрытие пароля
         private void ShowPassword_Click(object sender, RoutedEventArgs e)
         {
-            if (showPassword == true)
+            try
             {
-                showPassword = false;
-                HidePassword.Visibility = Visibility.Visible;
-                Password.Visibility = Visibility.Collapsed;
+                if (showPassword == true)
+                {
+                    showPassword = false;
+                    HidePassword.Visibility = Visibility.Visible;
+                    Password.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    showPassword = true;
+                    HidePassword.Visibility = Visibility.Collapsed;
+                    Password.Visibility = Visibility.Visible;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                showPassword = true;
-                HidePassword.Visibility = Visibility.Collapsed;
-                Password.Visibility = Visibility.Visible;
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

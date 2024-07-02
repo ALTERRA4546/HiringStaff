@@ -102,57 +102,105 @@ namespace HiringStaff
         // Фильтрация
         private void Filter()
         {
-            string search = "";
-            string post = "";
+            try
+            {
+                string search = "";
+                string post = "";
 
-            if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
-                post = ChoiceOfPosition.SelectedItem.ToString();
-            else
-                post = null;
+                if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
+                    post = ChoiceOfPosition.SelectedItem.ToString();
+                else
+                    post = null;
 
-            if (Search.Text != "")
-                search = Search.Text;
+                if (Search.Text != "")
+                    search = Search.Text;
 
-            Initialization(StartingDate, EndDate, search, post);
+                Initialization(StartingDate, EndDate, search, post);
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Фильтрация по дате
         private void StartingDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Фильтарция по должности
         private void ChoiceOfPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Поиск сотрудников
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Открытие окна редактирования рабочего времени
         private void WorkingHoursData_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DataGridRow row = (DataGridRow)WorkingHoursData.ItemContainerGenerator.ContainerFromIndex(WorkingHoursData.SelectedIndex);
-            DataGridCell cell = WorkingHoursData.Columns[0].GetCellContent(row).Parent as DataGridCell;
-            TempData.selectedWorkingHours = Convert.ToInt32(((TextBlock)cell.Content).Text);
+            try
+            {
+                DataGridRow row = (DataGridRow)WorkingHoursData.ItemContainerGenerator.ContainerFromIndex(WorkingHoursData.SelectedIndex);
+                DataGridCell cell = WorkingHoursData.Columns[0].GetCellContent(row).Parent as DataGridCell;
+                TempData.selectedWorkingHours = Convert.ToInt32(((TextBlock)cell.Content).Text);
 
-            AddOrChangeWorkingHours addOrChangeWorkingHours = new AddOrChangeWorkingHours();
-            addOrChangeWorkingHours.ShowDialog();
-            Filter();
+                AddOrChangeWorkingHours addOrChangeWorkingHours = new AddOrChangeWorkingHours();
+                addOrChangeWorkingHours.ShowDialog();
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Открытие окна добавления рабочего времени
         private void AddGraph_Click(object sender, RoutedEventArgs e)
         {
-            TempData.selectedWorkingHours = -1;
-            AddOrChangeWorkingHours addOrChangeWorkingHours = new AddOrChangeWorkingHours();
-            addOrChangeWorkingHours.ShowDialog();
-            Filter();
+            try
+            {
+                TempData.selectedWorkingHours = -1;
+                AddOrChangeWorkingHours addOrChangeWorkingHours = new AddOrChangeWorkingHours();
+                addOrChangeWorkingHours.ShowDialog();
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         // Удаление графика
@@ -195,33 +243,41 @@ namespace HiringStaff
         // Режим экспорта
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-            if (ChoiceOfPosition.SelectedItem.ToString() != "Все" || DateChecker.IsChecked == true)
+            try
             {
-                if (MessageBox.Show("Экспортировать данные с использованием выставленных фильтров?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (ChoiceOfPosition.SelectedItem.ToString() != "Все" || DateChecker.IsChecked == true)
                 {
-                    string post = "";
-                    bool dateChecker = false;
+                    if (MessageBox.Show("Экспортировать данные с использованием выставленных фильтров?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                    {
+                        string post = "";
+                        bool dateChecker = false;
 
-                    if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
-                        post = ChoiceOfPosition.SelectedItem.ToString();
+                        if (ChoiceOfPosition.SelectedItem.ToString() != "Все")
+                            post = ChoiceOfPosition.SelectedItem.ToString();
+                        else
+                            post = null;
+
+                        if (DateChecker.IsChecked == true)
+                            dateChecker = true;
+                        else
+                            dateChecker = false;
+
+                        ExportData(StartingDate, EndDate, post, dateChecker);
+                    }
                     else
-                        post = null;
-
-                    if (DateChecker.IsChecked == true)
-                        dateChecker = true;
-                    else
-                        dateChecker = false;
-
-                    ExportData(StartingDate, EndDate, post, dateChecker);
+                    {
+                        ExportData(StartingDate, EndDate, null, false);
+                    }
                 }
                 else
                 {
                     ExportData(StartingDate, EndDate, null, false);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                ExportData(StartingDate, EndDate, null, false);
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -398,7 +454,15 @@ namespace HiringStaff
         // Изменение состояния CheckBox
         private void DateChecker_Click(object sender, RoutedEventArgs e)
         {
-            Filter();
+            try
+            {
+                Filter();
+            }
+            catch (Exception ex)
+            {
+                // Обработка искючений
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

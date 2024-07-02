@@ -122,9 +122,9 @@ namespace HiringStaff
                                                 Класс = classes.Наименование
                                             }).FirstOrDefault();
 
-                        Surname.Text = employeeData.Фамилия;
-                        Name.Text = employeeData.Имя;
-                        Patronymic.Text = employeeData.Отчество;
+                        EmployeesSurname.Text = employeeData.Фамилия;
+                        EmployeesName.Text = employeeData.Имя;
+                        EmployeesPatronymic.Text = employeeData.Отчество;
                         Phone.Text = employeeData.Номер_телефона;
                         Email.Text = employeeData.Email;
                         Birthday.SelectedDate = employeeData.Дата_рождения;
@@ -202,7 +202,7 @@ namespace HiringStaff
             try
             {
                 // Проверка заполнения данных
-                if (Surname.Text == "" || Name.Text == "" || Patronymic.Text == "" || Birthday.SelectedDate == null || Experience.Text == "" || Address.Text == "" || DateOfEmployment.SelectedDate == null)
+                if (EmployeesSurname.Text == "" || EmployeesName.Text == "" || EmployeesPatronymic.Text == "" || Birthday.SelectedDate == null || Experience.Text == "" || Address.Text == "" || DateOfEmployment.SelectedDate == null)
                 {
                     MessageBox.Show("Данные не введены", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
@@ -279,9 +279,9 @@ namespace HiringStaff
                     {
                         // Добавление нового сотрудника
                         var employee = new Сотрудник();
-                        employee.Фамилия = Surname.Text;
-                        employee.Имя = Name.Text;
-                        employee.Отчество = Patronymic.Text;
+                        employee.Фамилия = EmployeesSurname.Text;
+                        employee.Имя = EmployeesName.Text;
+                        employee.Отчество = EmployeesPatronymic.Text;
                         employee.Номер_телефона = Phone.Text;
                         employee.Email = Email.Text;
                         employee.Дата_рождения = Birthday.SelectedDate.Value;
@@ -348,9 +348,9 @@ namespace HiringStaff
                     {
                         // Сохранение изменений данных сотрудника
                         var employee = dataBase.Сотрудник.FirstOrDefault(x => x.Код_сотрудника == TempData.selectedEmployee);
-                        employee.Фамилия = Surname.Text;
-                        employee.Имя = Name.Text;
-                        employee.Отчество = Patronymic.Text;
+                        employee.Фамилия = EmployeesSurname.Text;
+                        employee.Имя = EmployeesName.Text;
+                        employee.Отчество = EmployeesPatronymic.Text;
                         employee.Номер_телефона = Phone.Text;
                         employee.Email = Email.Text;
                         employee.Дата_рождения = Birthday.SelectedDate.Value;
