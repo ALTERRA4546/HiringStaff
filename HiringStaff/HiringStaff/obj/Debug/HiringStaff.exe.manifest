@@ -139,14 +139,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HiringStaff.exe" size="309248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HiringStaff.exe" size="315904">
       <assemblyIdentity name="HiringStaff" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zZhJJJv4Y0Mnehi0phb/riFhrlrahfk5OI/fPwNYoL0=</dsig:DigestValue>
+        <dsig:DigestValue>UtLRNGForj5jQWHMx5H2ARrX9kZHDr19lY2o0MDyKHs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

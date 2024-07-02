@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HiringStaffModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Авторизация">
+    <Key>
+      <PropertyRef Name="Код_авторизации" />
+    </Key>
+    <Property Name="Код_авторизации" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_сотрудника" Type="Int32" />
+    <Property Name="Логин" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Пароль" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Авторизация_Сотрудник" FromRole="Авторизация" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="График_работы">
+    <Key>
+      <PropertyRef Name="Код_графика_работы" />
+    </Key>
+    <Property Name="Код_графика_работы" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="Дата_начала_работы" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Дата_окончания_работы" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_График_работы_Сотрудник" FromRole="График_работы" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Документы">
+    <Key>
+      <PropertyRef Name="Код_документа" />
+    </Key>
+    <Property Name="Код_документа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="Серия_паспорта" Type="Int32" Nullable="false" />
+    <Property Name="Номер_паспорта" Type="Int32" Nullable="false" />
+    <Property Name="ИНН" Type="Int64" Nullable="false" />
+    <Property Name="СНИЛС" Type="Int64" Nullable="false" />
+    <Property Name="Номер_медицинского_полиса" Type="Int64" Nullable="false" />
+    <Property Name="Фотография" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Номер_трудового_договора" Type="Int64" />
+    <Property Name="Срок_действия_договора" Type="Int32" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Документы_Сотрудник" FromRole="Документы" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Должность">
+    <Key>
+      <PropertyRef Name="Код_должности" />
+    </Key>
+    <Property Name="Код_должности" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Зарплаты_сотрудников" Relationship="Self.FK_Зарплаты_сотрудников_Должность" FromRole="Должность" ToRole="Зарплаты_сотрудников" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Сотрудник_Должность" FromRole="Должность" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Зарплаты_сотрудников">
+    <Key>
+      <PropertyRef Name="Код_зарплаты" />
+    </Key>
+    <Property Name="Код_зарплаты" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_должности" Type="Int32" Nullable="false" />
+    <Property Name="Стаж" Type="Int32" Nullable="false" />
+    <Property Name="Зарплата" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Должность" Relationship="Self.FK_Зарплаты_сотрудников_Должность" FromRole="Зарплаты_сотрудников" ToRole="Должность" />
+  </EntityType>
+  <EntityType Name="Классы">
+    <Key>
+      <PropertyRef Name="Код_класса" />
+    </Key>
+    <Property Name="Код_класса" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Код_классного_руководителя" Type="Int32" />
+    <Property Name="Код_классного_кабинета" Type="Int32" />
+    <Property Name="Количество_учеников" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Помещение" Relationship="Self.FK_Классы_Помещение" FromRole="Классы" ToRole="Помещение" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Классы_Сотрудник" FromRole="Классы" ToRole="Сотрудник" />
+    <NavigationProperty Name="Преподаваемые_часы" Relationship="Self.FK_Преподаваемые_часы_Классы" FromRole="Классы" ToRole="Преподаваемые_часы" />
+  </EntityType>
+  <EntityType Name="Помещение">
+    <Key>
+      <PropertyRef Name="Код_помещения" />
+    </Key>
+    <Property Name="Код_помещения" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Код_ответственного_сотрудника" Type="Int32" />
+    <Property Name="Площадь" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Классы" Relationship="Self.FK_Классы_Помещение" FromRole="Помещение" ToRole="Классы" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Помещение_Сотрудник" FromRole="Помещение" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Предмет">
+    <Key>
+      <PropertyRef Name="Код_предмета" />
+    </Key>
+    <Property Name="Код_предмета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Наименование" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Преподаваемые_предметы" Relationship="Self.FK_Преподаваемые_предметы_Предмет" FromRole="Предмет" ToRole="Преподаваемые_предметы" />
+    <NavigationProperty Name="Преподаваемые_часы" Relationship="Self.FK_Преподаваемые_часы_Предмет" FromRole="Предмет" ToRole="Преподаваемые_часы" />
+  </EntityType>
+  <EntityType Name="Преподаваемые_предметы">
+    <Key>
+      <PropertyRef Name="Код_преподоваемого_предмета" />
+    </Key>
+    <Property Name="Код_преподоваемого_предмета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_учителя" Type="Int32" Nullable="false" />
+    <Property Name="Код_предмета" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Предмет" Relationship="Self.FK_Преподаваемые_предметы_Предмет" FromRole="Преподаваемые_предметы" ToRole="Предмет" />
+    <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Преподаваемые_предметы_Сотрудник" FromRole="Преподаваемые_предметы" ToRole="Сотрудник" />
+  </EntityType>
+  <EntityType Name="Преподаваемые_часы">
+    <Key>
+      <PropertyRef Name="Код_преподаваемых_часов" />
+    </Key>
+    <Property Name="Код_преподаваемых_часов" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Код_предмета" Type="Int32" Nullable="false" />
+    <Property Name="Код_класса" Type="Int32" Nullable="false" />
+    <Property Name="Дата_распределения_часов" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Количество_часов" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Классы" Relationship="Self.FK_Преподаваемые_часы_Классы" FromRole="Преподаваемые_часы" ToRole="Классы" />
+    <NavigationProperty Name="Предмет" Relationship="Self.FK_Преподаваемые_часы_Предмет" FromRole="Преподаваемые_часы" ToRole="Предмет" />
+  </EntityType>
+  <EntityType Name="Сотрудник">
+    <Key>
+      <PropertyRef Name="Код_сотрудника" />
+    </Key>
+    <Property Name="Код_сотрудника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Стаж" Type="Int32" Nullable="false" />
+    <Property Name="Адрес" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Дата_приема_на_работу" Type="DateTime" Precision="0" />
+    <Property Name="Код_должности" Type="Int32" />
+    <NavigationProperty Name="Авторизация" Relationship="Self.FK_Авторизация_Сотрудник" FromRole="Сотрудник" ToRole="Авторизация" />
+    <NavigationProperty Name="График_работы" Relationship="Self.FK_График_работы_Сотрудник" FromRole="Сотрудник" ToRole="График_работы" />
+    <NavigationProperty Name="Документы" Relationship="Self.FK_Документы_Сотрудник" FromRole="Сотрудник" ToRole="Документы" />
+    <NavigationProperty Name="Должность" Relationship="Self.FK_Сотрудник_Должность" FromRole="Сотрудник" ToRole="Должность" />
+    <NavigationProperty Name="Классы" Relationship="Self.FK_Классы_Сотрудник" FromRole="Сотрудник" ToRole="Классы" />
+    <NavigationProperty Name="Помещение" Relationship="Self.FK_Помещение_Сотрудник" FromRole="Сотрудник" ToRole="Помещение" />
+    <NavigationProperty Name="Преподаваемые_предметы" Relationship="Self.FK_Преподаваемые_предметы_Сотрудник" FromRole="Сотрудник" ToRole="Преподаваемые_предметы" />
+  </EntityType>
+  <Association Name="FK_Авторизация_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Авторизация" Type="Self.Авторизация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код_сотрудника" />
+      </Principal>
+      <Dependent Role="Авторизация">
+        <PropertyRef Name="Код_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_График_работы_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="График_работы" Type="Self.График_работы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код_сотрудника" />
+      </Principal>
+      <Dependent Role="График_работы">
+        <PropertyRef Name="Код_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Документы_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Документы" Type="Self.Документы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код_сотрудника" />
+      </Principal>
+      <Dependent Role="Документы">
+        <PropertyRef Name="Код_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Зарплаты_сотрудников_Должность">
+    <End Role="Должность" Type="Self.Должность" Multiplicity="1" />
+    <End Role="Зарплаты_сотрудников" Type="Self.Зарплаты_сотрудников" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Должность">
+        <PropertyRef Name="Код_должности" />
+      </Principal>
+      <Dependent Role="Зарплаты_сотрудников">
+        <PropertyRef Name="Код_должности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудник_Должность">
+    <End Role="Должность" Type="Self.Должность" Multiplicity="0..1" />
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Должность">
+        <PropertyRef Name="Код_должности" />
+      </Principal>
+      <Dependent Role="Сотрудник">
+        <PropertyRef Name="Код_должности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Классы_Помещение">
+    <End Role="Помещение" Type="Self.Помещение" Multiplicity="0..1" />
+    <End Role="Классы" Type="Self.Классы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Помещение">
+        <PropertyRef Name="Код_помещения" />
+      </Principal>
+      <Dependent Role="Классы">
+        <PropertyRef Name="Код_классного_кабинета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Классы_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Классы" Type="Self.Классы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код_сотрудника" />
+      </Principal>
+      <Dependent Role="Классы">
+        <PropertyRef Name="Код_классного_руководителя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Преподаваемые_часы_Классы">
+    <End Role="Классы" Type="Self.Классы" Multiplicity="1" />
+    <End Role="Преподаваемые_часы" Type="Self.Преподаваемые_часы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Классы">
+        <PropertyRef Name="Код_класса" />
+      </Principal>
+      <Dependent Role="Преподаваемые_часы">
+        <PropertyRef Name="Код_класса" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Помещение_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+    <End Role="Помещение" Type="Self.Помещение" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код_сотрудника" />
+      </Principal>
+      <Dependent Role="Помещение">
+        <PropertyRef Name="Код_ответственного_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Преподаваемые_предметы_Предмет">
+    <End Role="Предмет" Type="Self.Предмет" Multiplicity="1" />
+    <End Role="Преподаваемые_предметы" Type="Self.Преподаваемые_предметы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Предмет">
+        <PropertyRef Name="Код_предмета" />
+      </Principal>
+      <Dependent Role="Преподаваемые_предметы">
+        <PropertyRef Name="Код_предмета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Преподаваемые_часы_Предмет">
+    <End Role="Предмет" Type="Self.Предмет" Multiplicity="1" />
+    <End Role="Преподаваемые_часы" Type="Self.Преподаваемые_часы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Предмет">
+        <PropertyRef Name="Код_предмета" />
+      </Principal>
+      <Dependent Role="Преподаваемые_часы">
+        <PropertyRef Name="Код_предмета" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Преподаваемые_предметы_Сотрудник">
+    <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="1" />
+    <End Role="Преподаваемые_предметы" Type="Self.Преподаваемые_предметы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Сотрудник">
+        <PropertyRef Name="Код_сотрудника" />
+      </Principal>
+      <Dependent Role="Преподаваемые_предметы">
+        <PropertyRef Name="Код_учителя" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HiringStaffEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Авторизация" EntityType="Self.Авторизация" />
+    <EntitySet Name="График_работы" EntityType="Self.График_работы" />
+    <EntitySet Name="Документы" EntityType="Self.Документы" />
+    <EntitySet Name="Должность" EntityType="Self.Должность" />
+    <EntitySet Name="Зарплаты_сотрудников" EntityType="Self.Зарплаты_сотрудников" />
+    <EntitySet Name="Классы" EntityType="Self.Классы" />
+    <EntitySet Name="Помещение" EntityType="Self.Помещение" />
+    <EntitySet Name="Предмет" EntityType="Self.Предмет" />
+    <EntitySet Name="Преподаваемые_предметы" EntityType="Self.Преподаваемые_предметы" />
+    <EntitySet Name="Преподаваемые_часы" EntityType="Self.Преподаваемые_часы" />
+    <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
+    <AssociationSet Name="FK_Авторизация_Сотрудник" Association="Self.FK_Авторизация_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Авторизация" EntitySet="Авторизация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_График_работы_Сотрудник" Association="Self.FK_График_работы_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="График_работы" EntitySet="График_работы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Документы_Сотрудник" Association="Self.FK_Документы_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Документы" EntitySet="Документы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Зарплаты_сотрудников_Должность" Association="Self.FK_Зарплаты_сотрудников_Должность">
+      <End Role="Должность" EntitySet="Должность" />
+      <End Role="Зарплаты_сотрудников" EntitySet="Зарплаты_сотрудников" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудник_Должность" Association="Self.FK_Сотрудник_Должность">
+      <End Role="Должность" EntitySet="Должность" />
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Классы_Помещение" Association="Self.FK_Классы_Помещение">
+      <End Role="Помещение" EntitySet="Помещение" />
+      <End Role="Классы" EntitySet="Классы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Классы_Сотрудник" Association="Self.FK_Классы_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Классы" EntitySet="Классы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Преподаваемые_часы_Классы" Association="Self.FK_Преподаваемые_часы_Классы">
+      <End Role="Классы" EntitySet="Классы" />
+      <End Role="Преподаваемые_часы" EntitySet="Преподаваемые_часы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Помещение_Сотрудник" Association="Self.FK_Помещение_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Помещение" EntitySet="Помещение" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Преподаваемые_предметы_Предмет" Association="Self.FK_Преподаваемые_предметы_Предмет">
+      <End Role="Предмет" EntitySet="Предмет" />
+      <End Role="Преподаваемые_предметы" EntitySet="Преподаваемые_предметы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Преподаваемые_часы_Предмет" Association="Self.FK_Преподаваемые_часы_Предмет">
+      <End Role="Предмет" EntitySet="Предмет" />
+      <End Role="Преподаваемые_часы" EntitySet="Преподаваемые_часы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Преподаваемые_предметы_Сотрудник" Association="Self.FK_Преподаваемые_предметы_Сотрудник">
+      <End Role="Сотрудник" EntitySet="Сотрудник" />
+      <End Role="Преподаваемые_предметы" EntitySet="Преподаваемые_предметы" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static HiringStaff.Authorization;
 using System.Data.Entity;
+using Org.BouncyCastle.Asn1.Cmp;
 
 namespace HiringStaff
 {
@@ -148,6 +149,176 @@ namespace HiringStaff
             }
         }
 
+        // Экспорт отчета о зарплате в pdf
+        public void ExportingSalaryReportPDF(string path)
+        {
+            using (var dataBase = new HiringStaffEntities())
+            {
+                var salaryReport = (from employee in dataBase.Сотрудник
+                                    join
+                                    post in dataBase.Должность on employee.Код_должности equals post.Код_должности
+                                    join
+                                    salary in dataBase.Зарплаты_сотрудников on post.Код_должности equals salary.Код_должности
+                                    where (salary.Стаж <= employee.Стаж)
+                                    group new { employee, post, salary } by new { employee.Код_сотрудника, employee.Фамилия, employee.Имя, employee.Отчество, employee.Стаж, Должность = post.Наименование } into dataGroup
+                                    select new
+                                    {
+                                        dataGroup.Key.Код_сотрудника,
+                                        dataGroup.Key.Фамилия,
+                                        dataGroup.Key.Имя,
+                                        dataGroup.Key.Отчество,
+                                        dataGroup.Key.Должность,
+                                        dataGroup.Key.Стаж,
+                                        Зарплата = dataGroup.Max(x => x.salary.Зарплата)
+                                    }).ToList();
+
+                // Создание документа
+                Document doc = new Document();
+                PdfWriter PDFWriter = PdfWriter.GetInstance(doc, new FileStream($@"{path}", FileMode.Create));
+                doc.SetPageSize(PageSize.A3);
+
+                // Создание шрифта
+                BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                Font font = new Font(baseFont, 8);
+
+                // Открытие документа
+                doc.Open();
+
+                // Создание таблицы
+                PdfPTable table = new PdfPTable(7);
+                table.WidthPercentage = 100;
+
+                // Создание заголовков таблицы
+                table.AddCell(new Paragraph("Код сотрудника", font));
+                table.AddCell(new Paragraph("Фамилия", font));
+                table.AddCell(new Paragraph("Имя", font));
+                table.AddCell(new Paragraph("Отчество", font));
+                table.AddCell(new Paragraph("Должность", font));
+                table.AddCell(new Paragraph("Стаж", font));
+                table.AddCell(new Paragraph("Зарплата", font)); ;
+
+                // Заполнение таблицы полученными данными
+                foreach (var line in salaryReport)
+                {
+                    table.AddCell(new Paragraph(line.Код_сотрудника.ToString(), font));
+                    table.AddCell(new Paragraph(line.Фамилия.ToString(), font));
+                    table.AddCell(new Paragraph(line.Имя.ToString(), font));
+                    table.AddCell(new Paragraph(line.Отчество.ToString(), font));
+                    table.AddCell(new Paragraph(line.Должность.ToString(), font));
+                    table.AddCell(new Paragraph(line.Стаж.ToString(), font));
+                    table.AddCell(new Paragraph(line.Зарплата.ToString(), font));
+
+                }
+
+                // Добавление таблицы и закрытие документа
+                doc.Add(table);
+                doc.Close();
+            }
+        }
+
+        // Экспорт отчета о зарплате в csv
+        public void ExportingSalaryReportCSV(string path)
+        {
+            using (var dataBase = new HiringStaffEntities())
+            {
+                var salaryReport = (from employee in dataBase.Сотрудник
+                                    join
+                                    post in dataBase.Должность on employee.Код_должности equals post.Код_должности
+                                    join
+                                    salary in dataBase.Зарплаты_сотрудников on post.Код_должности equals salary.Код_должности
+                                    where (salary.Стаж <= employee.Стаж)
+                                    group new { employee, post, salary } by new { employee.Код_сотрудника, employee.Фамилия, employee.Имя, employee.Отчество, employee.Стаж, Должность = post.Наименование } into dataGroup
+                                    select new
+                                    {
+                                        dataGroup.Key.Код_сотрудника,
+                                        dataGroup.Key.Фамилия,
+                                        dataGroup.Key.Имя,
+                                        dataGroup.Key.Отчество,
+                                        dataGroup.Key.Должность,
+                                        dataGroup.Key.Стаж,
+                                        Зарплата = dataGroup.Max(x => x.salary.Зарплата)
+                                    }).ToList();
+
+                // Открытие потока для записи файла
+                using (var CSVWriter = new StreamWriter(path, false, Encoding.UTF8))
+                {
+                    // Добавление заголовков
+                    CSVWriter.WriteLine("Код сотрудника,Фамилия,Имя,Отчество,Должность,Стаж,Зарплата");
+
+                    // Добавление полуенных данных
+                    foreach (var line in salaryReport)
+                    {
+                        CSVWriter.WriteLine($"{line.Код_сотрудника},{line.Фамилия},{line.Имя},{line.Отчество},{line.Должность},{line.Стаж},{line.Зарплата}");
+                    }
+                }
+            }
+        }
+
+        // Экспорт отчета о зарплате в xlsx
+        public void ExportingSalaryReportXLSX(string path)
+        {
+            using (var dataBase = new HiringStaffEntities())
+            {
+                var salaryReport = (from employee in dataBase.Сотрудник
+                                    join
+                                    post in dataBase.Должность on employee.Код_должности equals post.Код_должности
+                                    join
+                                    salary in dataBase.Зарплаты_сотрудников on post.Код_должности equals salary.Код_должности
+                                    where (salary.Стаж <= employee.Стаж)
+                                    group new { employee, post, salary } by new { employee.Код_сотрудника, employee.Фамилия, employee.Имя, employee.Отчество, employee.Стаж, Должность = post.Наименование } into dataGroup
+                                    select new
+                                    {
+                                        dataGroup.Key.Код_сотрудника,
+                                        dataGroup.Key.Фамилия,
+                                        dataGroup.Key.Имя,
+                                        dataGroup.Key.Отчество,
+                                        dataGroup.Key.Должность,
+                                        dataGroup.Key.Стаж,
+                                        Зарплата = dataGroup.Max(x => x.salary.Зарплата)
+                                    }).ToList();
+                // Обявление лицензии
+                ExcelPackage.LicenseContext = LicenseContext.Commercial;
+
+                // Создание испульземого пакета
+                var excelPackage = new ExcelPackage();
+
+                // Создание листа
+                var worksheet = excelPackage.Workbook.Worksheets.Add("Сотрудники");
+
+                // Добавление заголовков в ячейки
+                worksheet.Cells["A1"].Value = "Код сотрудника";
+                worksheet.Cells["B1"].Value = "Фамилия";
+                worksheet.Cells["C1"].Value = "Имя";
+                worksheet.Cells["D1"].Value = "Отчество";
+                worksheet.Cells["E1"].Value = "Должность";
+                worksheet.Cells["F1"].Value = "Стаж";
+                worksheet.Cells["G1"].Value = "Зарплата";
+
+                // Заполнение полученными данными ячейки
+                int rowIndex = 2;
+                foreach (var employee in salaryReport)
+                {
+                    worksheet.Cells[rowIndex, 7].Style.Numberformat.Format = "₽0.00";
+
+                    worksheet.Cells[rowIndex, 1].Value = employee.Код_сотрудника;
+                    worksheet.Cells[rowIndex, 2].Value = employee.Фамилия;
+                    worksheet.Cells[rowIndex, 3].Value = employee.Имя;
+                    worksheet.Cells[rowIndex, 4].Value = employee.Отчество;
+                    worksheet.Cells[rowIndex, 5].Value = employee.Должность;
+                    worksheet.Cells[rowIndex, 6].Value = employee.Стаж;
+                    worksheet.Cells[rowIndex, 7].Value = employee.Зарплата;
+
+                    rowIndex++;
+                }
+
+                // Выставление автоматической ширины для столбцов
+                worksheet.Cells.AutoFitColumns();
+
+                // Сохранение файла
+                excelPackage.SaveAs(new FileInfo(path));
+            }
+        }
+
         // Экспрот отчета о зарплатах
         private void ExportingSalaryReport()
         {
@@ -161,130 +332,24 @@ namespace HiringStaff
                     // Загрузка экспортируемых данных из базы данных
                     using (var dataBase = new HiringStaffEntities())
                     {
-                        var salaryReport = (from employee in dataBase.Сотрудник
-                                            join
-                                            post in dataBase.Должность on employee.Код_должности equals post.Код_должности
-                                            join
-                                            salary in dataBase.Зарплаты_сотрудников on post.Код_должности equals salary.Код_должности
-                                            where (salary.Стаж <= employee.Стаж)
-                                            group new { employee, post, salary } by new { employee.Код_сотрудника, employee.Фамилия, employee.Имя, employee.Отчество, employee.Стаж, Должность = post.Наименование } into dataGroup
-                                            select new
-                                            {
-                                                dataGroup.Key.Код_сотрудника,
-                                                dataGroup.Key.Фамилия,
-                                                dataGroup.Key.Имя,
-                                                dataGroup.Key.Отчество,
-                                                dataGroup.Key.Должность,
-                                                dataGroup.Key.Стаж,
-                                                Зарплата = dataGroup.Max(x => x.salary.Зарплата)
-                                            }).ToList();
+                        
 
                         // Сохранение в выбранном формате
                         switch (saveFileDialog.FilterIndex)
                         {
                             // Сохранение в PDF
                             case 1:
-                                // Создание документа
-                                Document doc = new Document();
-                                PdfWriter PDFWriter = PdfWriter.GetInstance(doc, new FileStream($@"{saveFileDialog.FileName}", FileMode.Create));
-                                doc.SetPageSize(PageSize.A3);
-
-                                // Создание шрифта
-                                BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                                Font font = new Font(baseFont, 8);
-
-                                // Открытие документа
-                                doc.Open();
-
-                                // Создание таблицы
-                                PdfPTable table = new PdfPTable(7);
-                                table.WidthPercentage = 100;
-
-                                // Создание заголовков таблицы
-                                table.AddCell(new Paragraph("Код сотрудника", font));
-                                table.AddCell(new Paragraph("Фамилия", font));
-                                table.AddCell(new Paragraph("Имя", font));
-                                table.AddCell(new Paragraph("Отчество", font));
-                                table.AddCell(new Paragraph("Должность", font));
-                                table.AddCell(new Paragraph("Стаж", font));
-                                table.AddCell(new Paragraph("Зарплата", font)); ;
-
-                                // Заполнение таблицы полученными данными
-                                foreach (var line in salaryReport)
-                                {
-                                    table.AddCell(new Paragraph(line.Код_сотрудника.ToString(), font));
-                                    table.AddCell(new Paragraph(line.Фамилия.ToString(), font));
-                                    table.AddCell(new Paragraph(line.Имя.ToString(), font));
-                                    table.AddCell(new Paragraph(line.Отчество.ToString(), font));
-                                    table.AddCell(new Paragraph(line.Должность.ToString(), font));
-                                    table.AddCell(new Paragraph(line.Стаж.ToString(), font));
-                                    table.AddCell(new Paragraph(line.Зарплата.ToString(), font));
-
-                                }
-
-                                // Добавление таблицы и закрытие документа
-                                doc.Add(table);
-                                doc.Close();
+                                ExportingSalaryReportPDF(saveFileDialog.FileName);
                                 break;
 
                             // Сохранение в CSV 
                             case 2:
-                                // Открытие потока для записи файла
-                                using (var CSVWriter = new StreamWriter(saveFileDialog.FileName, false, Encoding.UTF8))
-                                {
-                                    // Добавление заголовков
-                                    CSVWriter.WriteLine("Код сотрудника,Фамилия,Имя,Отчество,Должность,Стаж,Зарплата");
-
-                                    // Добавление полуенных данных
-                                    foreach (var line in salaryReport)
-                                    {
-                                        CSVWriter.WriteLine($"{line.Код_сотрудника},{line.Фамилия},{line.Имя},{line.Отчество},{line.Должность},{line.Стаж},{line.Зарплата}");
-                                    }
-                                }
+                                ExportingSalaryReportCSV(saveFileDialog.FileName);
                                 break;
 
                             // Сохранение в Excel
                             case 3:
-                                // Обявление лицензии
-                                ExcelPackage.LicenseContext = LicenseContext.Commercial;
-
-                                // Создание испульземого пакета
-                                var excelPackage = new ExcelPackage();
-
-                                // Создание листа
-                                var worksheet = excelPackage.Workbook.Worksheets.Add("Сотрудники");
-
-                                // Добавление заголовков в ячейки
-                                worksheet.Cells["A1"].Value = "Код сотрудника";
-                                worksheet.Cells["B1"].Value = "Фамилия";
-                                worksheet.Cells["C1"].Value = "Имя";
-                                worksheet.Cells["D1"].Value = "Отчество";
-                                worksheet.Cells["E1"].Value = "Должность";
-                                worksheet.Cells["F1"].Value = "Стаж";
-                                worksheet.Cells["G1"].Value = "Зарплата";
-
-                                // Заполнение полученными данными ячейки
-                                int rowIndex = 2;
-                                foreach (var employee in salaryReport)
-                                {
-                                    worksheet.Cells[rowIndex, 7].Style.Numberformat.Format = "₽0.00";
-
-                                    worksheet.Cells[rowIndex, 1].Value = employee.Код_сотрудника;
-                                    worksheet.Cells[rowIndex, 2].Value = employee.Фамилия;
-                                    worksheet.Cells[rowIndex, 3].Value = employee.Имя;
-                                    worksheet.Cells[rowIndex, 4].Value = employee.Отчество;
-                                    worksheet.Cells[rowIndex, 5].Value = employee.Должность;
-                                    worksheet.Cells[rowIndex, 6].Value = employee.Стаж;
-                                    worksheet.Cells[rowIndex, 7].Value = employee.Зарплата;
-
-                                    rowIndex++;
-                                }
-
-                                // Выставление автоматической ширины для столбцов
-                                worksheet.Cells.AutoFitColumns();
-
-                                // Сохранение файла
-                                excelPackage.SaveAs(new FileInfo(saveFileDialog.FileName));
+                                ExportingSalaryReportXLSX(saveFileDialog.FileName);
                                 break;
                         }
 

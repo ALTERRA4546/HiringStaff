@@ -1,0 +1,100 @@
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\UnitTest.dll.config
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\UnitTest.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\UnitTest.pdb
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EntityFramework.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\HiringStaff.exe
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\itextsharp.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\HiringStaff.pdb
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\HiringStaff.exe.config
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EntityFramework.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\itextsharp.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\obj\Debug\UnitTest.csproj.AssemblyReference.cache
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\obj\Debug\UnitTest.csproj.Up2Date
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\obj\Debug\UnitTest.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\obj\Debug\UnitTest.pdb
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EPPlus.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Buffers.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Memory.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\EPPlus.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Buffers.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Memory.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\King Night\source\repos\HiringStaffUnitTest\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\Microsoft.TestPlatform.AdapterUtilities.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\UnitTest.dll.config
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\UnitTest.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\UnitTest.pdb
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EntityFramework.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EPPlus.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\HiringStaff.exe
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\itextsharp.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Buffers.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Memory.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\HiringStaff.pdb
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\HiringStaff.exe.config
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EntityFramework.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\EPPlus.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\itextsharp.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Buffers.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Memory.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\obj\Debug\UnitTest.csproj.AssemblyReference.cache
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\obj\Debug\UnitTest.csproj.Up2Date
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\obj\Debug\UnitTest.dll
+C:\Users\King Night\Documents\GitHub Repository\HiringStaff\HiringStaff\UnitTest\obj\Debug\UnitTest.pdb
