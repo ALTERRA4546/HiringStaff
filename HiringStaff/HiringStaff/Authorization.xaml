@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HiringStaff"
         mc:Ignorable="d"
-        Title="HiringStaff" Height="210" Width="400" Closing="Window_Closing" ResizeMode="NoResize">
+        Title="HiringStaff" Height="240" Width="400" Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="NoResize">
     <Grid> 
         <Grid>
             <Rectangle VerticalAlignment="Top" Width="400" Height="40" Fill="#09202a"/>
@@ -14,12 +14,16 @@
         <Grid Margin="10,50,10,10" HorizontalAlignment="Center">
             <StackPanel>
                 <Grid Margin="0,0,0,10">
+                    <Label Content="Сервер" FontSize="14"/>
+                    <TextBox x:Name="ConnectionString" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="250"/>
+                </Grid>
+                <Grid Margin="0,0,0,10">
                     <Label Content="Логин" FontSize="14"/>
-                    <TextBox x:Name="Login" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="250"/>
+                    <TextBox x:Name="Login" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="250"/>
                 </Grid>
                 <Grid Margin="0,0,0,10">
                     <Label Content="Пароль" FontSize="14"/>
-                    <TextBox x:Name="Password" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="222" TextChanged="Password_TextChanged"/>
+                    <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="222" TextChanged="Password_TextChanged"/>
                     <PasswordBox x:Name="HidePassword" HorizontalAlignment="Left" Margin="80,0,0,0" FontSize="14" Width="222" PasswordChanged="HidePassword_PasswordChanged"/>
                     <Button x:Name="ShowPassword" Content=" 👁 " HorizontalAlignment="Left" Margin="303,0,0,0" Click="ShowPassword_Click"/>
                 </Grid>
