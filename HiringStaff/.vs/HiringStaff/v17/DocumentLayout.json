@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|c:\\users\\king night\\source\\repos\\hiringstaff\\hiringstaff\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5CB5648C-5050-4383-BFB0-E36B18D66458}|HiringStaff\\HiringStaff.csproj|solutionrelative:hiringstaff\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 343,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +23,18 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{873151d0-cf2e-48cc-b4bf-ad0394f6a3c3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Authorization.xaml",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Authorization.xaml",
+              "RelativeDocumentMoniker": "HiringStaff\\Authorization.xaml",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\HiringStaff\\HiringStaff\\Authorization.xaml",
+              "RelativeToolTip": "HiringStaff\\Authorization.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-04T14:08:29.887Z",
+              "EditorCaption": ""
             }
           ]
         },
